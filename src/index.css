@@ -137,18 +137,38 @@ nav {
 
 nav .routes {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-.register {
-  background-color: red;
+nav .left-links {
+  display: flex;
+  gap: 8px;
+  margin-left: 10rem;
 }
 
+.routes .right-links {
+  display: block;
+  gap: 10px;
+  margin-right: 2rem;
+}
 .nav-logo {
   display: none;
 }
+.sign-up-link {
+  display: inline-block; /* Makes the link behave like a block element */
+  background-color: rgba(0, 0, 0, 0.5); /* Sets the background color to red */
+  color: white; /* Sets the text color to white for contrast */
+  padding: 10px 20px; /* Adds padding around the text */
+  text-decoration: none; /* Removes the underline from the link */
+  border-radius: 10px; /* Rounds the corners of the box */
+  transition: background-color 0.3s ease; /* Smoothens the background color change */
+}
 
+.sign-up-link:hover {
+  background-color: rgba(0, 0, 0, 0.3); /* Darkens the red color on hover */
+}
 nav .routes img {
   position: absolute;
 
@@ -156,6 +176,9 @@ nav .routes img {
 
   left: 2rem;
   top: 0.75rem;
+  display: flex;
+  width: 65px;
+  height: 65px;
 }
 
 nav > a {
@@ -836,6 +859,15 @@ body > footer div h4 {
   .contact-info {
     width: 100%;
   }
+  .formLogin {
+    min-width: 300px;
+    padding: 16px;
+  }
+  .formLogin input[type="text"],
+  .formLoginQ input[type="email"],
+  .formLogin input[type="password"] {
+    padding: 10px 32px;
+  }
 }
 
 /* mobile view */
@@ -909,5 +941,15 @@ body > footer div h4 {
   }
   body > footer div {
     margin-bottom: 1rem;
-  } */
+ } */
+
+  .formLogin {
+    min-width: 300px;
+    padding: 16px;
+  }
+  .formLogin input[type="text"],
+  .formLoginQ input[type="email"],
+  .formLogin input[type="password"] {
+    padding: 10px 32px;
+  }
 }

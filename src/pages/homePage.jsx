@@ -6,7 +6,6 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import "../index.css";
-
 function HomePage() {
   return (
     <section id="home">
