@@ -7,7 +7,8 @@ import Layout from "./layout";
 import Login from "./login/Login";
 import SignUp from "./login/signUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import MoreServicesPage from "./pages/moreServicesPage.tsx";
+import ServiceDetailPage from "./pages/serviceDetailPage.tsx";
 export default function App() {
   return (
     <Router>
@@ -23,9 +24,10 @@ export default function App() {
             </Layout>
           }
         />
-
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/more-services" element={<MoreServicesPage />} />
+        <Route path="/services/:slug" element={<ServiceDetailPage />} />
       </Routes>
     </Router>
   );

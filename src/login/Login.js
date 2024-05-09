@@ -7,7 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import logo from "../img/logo.png";
+import Layout from "../layout";
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -52,58 +53,66 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form
-        className={`${styles.glass} ${styles.formLogin}`}
-        onSubmit={submitHandler}
-        autoComplete="off"
-      >
-        <h2>Log In</h2>
-        <div>
+    <Layout>
+      <div className={styles.container}>
+        <form
+          className={`${styles.glass} ${styles.formLogin}`}
+          onSubmit={submitHandler}
+          autoComplete="off"
+        >
+          <header>
+            <h1 className={styles.headerTitle}>Service Station</h1>
+          </header>
+          <h2>Welcome!</h2>
           <div>
-            <input
-              type="text"
-              name="email"
-              value={data.email}
-              placeholder="E-mail"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <img src={emailIcon} alt="" />
+            <div>
+              <input
+                type="text"
+                name="email"
+                value={data.email}
+                placeholder="E-mail"
+                onChange={changeHandler}
+                onFocus={focusHandler}
+                autoComplete="off"
+              />
+              <img src={emailIcon} alt="" />
+            </div>
           </div>
-        </div>
-        <div>
           <div>
-            <input
-              type="password"
-              name="password"
-              value={data.password}
-              placeholder="Password"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <img src={passwordIcon} alt="" />
+            <div>
+              <input
+                type="password"
+                name="password"
+                value={data.password}
+                placeholder="Password"
+                onChange={changeHandler}
+                onFocus={focusHandler}
+                autoComplete="off"
+              />
+              <img src={passwordIcon} alt="" />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <button type="submit">Login</button>
-          <span
-            style={{
-              color: "#a29494",
-              textAlign: "center",
-              display: "inline-block",
-              width: "100%",
-            }}
-          >
-            Don't have a account? <Link to="/sign-up">Create account</Link>
-          </span>
-        </div>
-      </form>
-      <ToastContainer />
-    </div>
+          <div>
+            <button type="submit">Login</button>
+            <span
+              style={{
+                color: "white",
+                textAlign: "center",
+                display: "inline-block",
+                width: "100%",
+              }}
+            >
+              Don't have an account?{" "}
+              <Link to="/sign-up" style={{ color: "white" }}>
+                Create account
+              </Link>
+            </span>
+          </div>
+        </form>
+        <ToastContainer />
+      </div>
+    </Layout>
   );
 };
 
