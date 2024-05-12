@@ -72,19 +72,6 @@ body {
   display: block;
 }
 
-.dash {
-  width: 40px;
-  height: 3px;
-
-  border-radius: 3px;
-
-  background-color: #28285b;
-
-  display: inline-block;
-
-  margin-right: 1rem;
-}
-
 .dot {
   width: 25px;
   height: 25px;
@@ -123,85 +110,6 @@ body {
   border: 3px solid white !important;
   width: 15px !important;
   height: 15px !important;
-}
-/*  NAVBAR */
-nav {
-  position: fixed;
-  top: 0;
-  border-radius: 0 0 15px 15px;
-  padding: 1.5rem 0;
-  background-color: hsla(239, 39%, 76%, 0.7);
-  width: 100%;
-  z-index: 100%;
-}
-
-nav .routes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-nav .left-links {
-  display: flex;
-  gap: 8px;
-  margin-left: 10rem;
-}
-
-.routes .right-links {
-  display: block;
-  gap: 10px;
-  margin-right: 2rem;
-}
-.nav-logo {
-  display: none;
-}
-.sign-up-link {
-  display: inline-block; /* Makes the link behave like a block element */
-  background-color: rgba(0, 0, 0, 0.5); /* Sets the background color to red */
-  color: white; /* Sets the text color to white for contrast */
-  padding: 10px 20px; /* Adds padding around the text */
-  text-decoration: none; /* Removes the underline from the link */
-  border-radius: 10px; /* Rounds the corners of the box */
-  transition: background-color 0.3s ease; /* Smoothens the background color change */
-}
-
-.sign-up-link:hover {
-  background-color: rgba(0, 0, 0, 0.3); /* Darkens the red color on hover */
-}
-nav .routes img {
-  position: absolute;
-
-  width: 170px;
-
-  left: 2rem;
-  top: 0.75rem;
-  display: flex;
-  width: 65px;
-  height: 65px;
-}
-
-nav > a {
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-}
-
-nav a {
-  cursor: pointer;
-  color: white;
-
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.15rem;
-
-  margin: 0 1.5rem;
-
-  transition: 0.2s;
-}
-
-nav a:hover {
-  color: #a9aad9;
 }
 .services-grid {
   display: grid;
@@ -278,115 +186,6 @@ nav a:hover {
 .service-price {
   padding-top: 1rem;
 }
-#home {
-  min-height: 100vh;
-  max-height: 100vh;
-  background-image: url(./img/hero.png);
-  background-size: cover;
-  box-sizing: border-box;
-  padding: 3rem 5rem;
-  padding-top: 8rem;
-  display: flex;
-  align-items: center;
-}
-
-.hero {
-  background-color: hsla(239, 39%, 76%, 0.7);
-
-  border-radius: 15px;
-
-  padding: 1rem;
-
-  width: fit-content;
-
-  max-width: 450px;
-}
-
-.hero header {
-  display: flex;
-  gap: 1rem;
-}
-
-.hero header .badge {
-  padding: 0.8rem;
-
-  border-radius: 10px;
-
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  background-color: rgba(0, 0, 0, 0.15);
-  /* border: 2.5px solid rgba(255, 255, 255, 0.5); */
-
-  display: flex;
-  flex: 1;
-}
-
-.hero header .badge i {
-  font-size: 2.3rem;
-
-  margin-right: 0.8rem;
-
-  display: grid;
-  place-content: center;
-
-  color: #28285b;
-}
-
-.hero header span {
-  font-weight: bold;
-  color: #28285b;
-}
-
-.hero header a {
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-decoration: none;
-
-  color: white;
-}
-
-.hero h4 {
-  color: white;
-
-  display: flex;
-  align-items: center;
-
-  user-select: none;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  line-height: 3rem;
-
-  color: #28285b;
-  user-select: none;
-}
-
-.hero h1 span {
-  color: white;
-}
-
-.hero p {
-  user-select: none;
-}
-
-.hero footer {
-  display: flex;
-  justify-content: center;
-}
-
-.hero footer .badge {
-  background-color: #28285b;
-
-  border-radius: 1000px;
-
-  padding: 0.5rem 1.5rem;
-  margin: 1rem 0;
-
-  color: white;
-
-  user-select: none;
-}
-
 #about {
   display: flex;
   flex-direction: column;
@@ -866,27 +665,6 @@ body > footer div h4 {
 
 /* ipad - mini laptops */
 @media screen and (max-width: 980px) {
-  nav {
-    display: grid;
-    place-content: center;
-
-    padding: 0.8rem 0;
-  }
-
-  nav > a {
-    top: 0.3rem;
-  }
-
-  .nav-logo {
-    display: block;
-
-    width: 50px;
-  }
-
-  nav .routes {
-    display: none;
-  }
-
   .about-us {
     flex-direction: column;
   }
@@ -926,10 +704,6 @@ body > footer div h4 {
   .contact-info {
     width: 100%;
   }
-  .formLogin {
-    min-width: 300px;
-    padding: 16px;
-  }
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -941,32 +715,8 @@ body > footer div h4 {
 
 /* mobile view */
 @media screen and (max-width: 640px) {
-  #home {
-    padding: 2rem 1rem;
-    justify-content: center;
-  }
-
-  nav > a {
-    top: 0.75rem;
-    right: 0;
-  }
-
-  .turkish {
-    width: 35px;
-    height: 35px;
-  }
-
-  .english {
-    width: 35px;
-    height: 35px;
-  }
-
   #about {
     padding: 2rem 1rem;
-  }
-
-  .hero header a {
-    font-size: 0.6rem;
   }
 
   .about-us h1 {

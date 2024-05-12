@@ -1,0 +1,139 @@
+#home {
+  min-height: 100vh;
+  max-height: 100vh;
+  background-image: url(../../img/hero.webp);
+  background-size: cover;
+  box-sizing: border-box;
+  padding: 3rem 5rem;
+  padding-top: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+.hero {
+  /* background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+
+  background-color: hsla(239, 39%, 76%, 0.7);
+
+  border-radius: 15px;
+
+  padding: 1rem;
+
+  width: fit-content;
+
+  max-width: 450px;
+}
+
+.hero header {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero header .badge {
+  padding: 0.8rem;
+
+  border-radius: 10px;
+
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgba(0, 0, 0, 0.15);
+  /* border: 2.5px solid rgba(255, 255, 255, 0.5); */
+
+  display: flex;
+  flex: 1;
+}
+
+.hero header .badge i {
+  font-size: 2.3rem;
+
+  margin-right: 0.8rem;
+
+  display: grid;
+  place-content: center;
+
+  color: #28285b;
+}
+
+.hero header span {
+  font-weight: bold;
+  color: #28285b;
+}
+
+.hero header a {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: none;
+
+  color: white;
+}
+
+.hero h4 {
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  user-select: none;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+
+  color: #28285b;
+  user-select: none;
+}
+
+.hero h1 span {
+  color: white;
+}
+
+.hero p {
+  user-select: none;
+}
+
+.hero footer {
+  display: flex;
+  justify-content: center;
+}
+
+.hero footer .badge {
+  background-color: #28285b;
+
+  border-radius: 1000px;
+
+  padding: 0.5rem 1.5rem;
+  margin: 1rem 0;
+
+  color: white;
+
+  user-select: none;
+}
+
+.dash {
+  width: 40px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #28285b;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 640px) {
+  #home {
+    padding: 2rem 1rem;
+    justify-content: center;
+  }
+
+  .hero header a {
+    font-size: 0.6rem;
+  }
+}

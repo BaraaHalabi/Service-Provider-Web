@@ -1,7 +1,6 @@
 import React from "react";
-import HomePage from "./pages/homePage";
+import HomePage from "./pages/Home/index.jsx";
 import OurServicesPage from "./pages/ourServicesPage";
-import ContactUsPage from "./pages/contactUsPage";
 import AboutUsPage from "./pages/aboutUsPage";
 import Layout from "./layout";
 import Login from "./login/Login";
@@ -20,7 +19,6 @@ export default function App() {
               <HomePage />
               <AboutUsPage />
               <OurServicesPage />
-              <ContactUsPage />
             </Layout>
           }
         />

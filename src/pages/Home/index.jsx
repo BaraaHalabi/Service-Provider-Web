@@ -5,7 +5,8 @@ import {
   faLocationDot,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
-import "../index.css";
+import "../../index.css";
+import "./style.css";
 function HomePage() {
   return (
     <section id="home">
