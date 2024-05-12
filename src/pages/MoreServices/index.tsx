@@ -1,8 +1,9 @@
 // MoreServicesPage.js
 import React from "react";
-import ServiceCard from "../components/serviceCard.tsx";
-import services from "../components/servicesData.js";
-import Layout from "../layout";
+import services from "../../components/servicesData.js";
+import Layout from "../../layout.js";
+import "./style.css";
+import ServiceCard from "../../components/serviceCard.tsx";
 const MoreServicesPage = () => {
   return (
     <Layout>

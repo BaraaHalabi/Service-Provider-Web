@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import services from "../components/servicesData"; // Adjust the path as necessary
-import Layout from "../layout";
-
+import services from "../../components/servicesData"; // Adjust the path as necessary
+import Layout from "../../layout";
+import "./style.css";
 const ServiceDetailPage = () => {
   const { slug } = useParams();
   const service = services.find((s) => s.slug === slug); // Find the service by slug
@@ -14,9 +14,9 @@ const ServiceDetailPage = () => {
   return (
     <Layout>
       <div className="service-detail-page">
-        <div className="title-description-container">
+        <div>
           <h1>{service.title}</h1>
-          <div className="service-details">
+          <div>
             <figure>
               <div className="service-description">
                 <img src={service.imgSrc} alt={service.title} />

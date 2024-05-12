@@ -1,0 +1,84 @@
+#services {
+  min-height: 100vh;
+  position: relative;
+
+  background-image: linear-gradient(to bottom, #28285b, #e6e6f2);
+  z-index: 2;
+
+  padding: 2rem 5rem;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#services header {
+  text-align: center;
+}
+
+#services header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+}
+
+#services header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3rem;
+
+  color: #28285b;
+}
+
+.our-services {
+  display: flex;
+  gap: 2rem;
+  /* text-decoration: none; */
+}
+
+.curve {
+  z-index: -1;
+}
+
+#services .curve {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  right: 0;
+
+  background-color: white;
+  border-radius: 0 0 10rem 0;
+}
+
+@media screen and (max-width: 980px) {
+  #services .curve {
+    border-radius: 5rem 0 5rem 0;
+  }
+
+  #services .our-services {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 640px) {
+  #services {
+    padding: 2rem 1rem;
+  }
+
+  #services header h1 {
+    font-size: 2rem;
+  }
+
+  #services .curve {
+    text-decoration: none;
+
+    border-radius: 2rem 0 2rem 0;
+  }
+}

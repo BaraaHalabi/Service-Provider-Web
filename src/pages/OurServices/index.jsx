@@ -1,9 +1,9 @@
 // OurServicesPage.js
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import ServiceCard from "../components/serviceCard.tsx";
-import services from "../components/servicesData";
-
+import ServiceCard from "../../components/serviceCard.tsx";
+import services from "../../components/servicesData.js";
+import "./style.css";
 function OurServicesPage() {
   return (
     <section id="services">

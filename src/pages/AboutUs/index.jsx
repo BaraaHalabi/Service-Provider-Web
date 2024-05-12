@@ -4,12 +4,11 @@ import {
   faShield,
   faMoneyBillWaveAlt,
 } from "@fortawesome/free-solid-svg-icons"; // Import the icons
-import "../index.css"; // Consider using CSS Modules or styled-components for scoped CSS
-import aboutus from "../img/about.png";
-import Guarantee from "../components/guarantee"; // Adjust the import path as necessary
-
+import "../../index.css"; // Consider using CSS Modules or styled-components for scoped CSS
+import aboutus from "../../img/about.png";
+import Guarantee from "../../components/guarantee"; // Adjust the import path as necessary
+import "./style.css";
 function AboutUsPage() {
-  // let about = useParams();
   return (
     <div>
       <section id="about">
