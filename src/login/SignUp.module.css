@@ -1,13 +1,31 @@
 .container {
-  padding: 100px 8rem;
+  padding: 10px 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url(../img/loginbg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  /* position: relative; */
+  /* background-color: red; */
+  /* background-image: url(../img/loginbg.png); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: cover; */
+  background-color: #f6f6f8;
+}
+.maleImage {
+  height: 500px;
+  position: absolute;
+  left: 0;
+  transform: translateX(-80%);
+  bottom: 0;
+}
+
+.femaleImage {
+  position: absolute;
+  height: 490px;
+  bottom: 0;
+  right: 0;
+  transform: translateX(calc(100% - 4px));
 }
 .glass {
   background: linear-gradient(
@@ -22,20 +40,13 @@
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 .formLogin {
-  padding: 25px;
+  padding: 5rem;
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  min-width: 350px;
-}
-
-.formLogin img {
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0.6;
-}
-
-.formLogin input:focus + img {
-  opacity: 1;
+  min-width: 20%;
+  position: relative;
+  background-color: red;
 }
 
 .formLogin > h2 {
@@ -137,22 +148,6 @@
 .formLogin input[type="checkbox"]:focus {
   outline: none;
   border: 2px solid var(--main-color-hover);
-}
-
-.formLogin img {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); /* Ensure it is perfectly centered */
-  width: 20px;
-  height: 20px;
-}
-.formLogin > div > div img {
-  position: absolute;
-  max-width: 15px;
-  max-height: 15px;
-  left: 3px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .formLogin ::placeholder {

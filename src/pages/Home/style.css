@@ -1,12 +1,12 @@
 #home {
-  /* min-height: 100vh; */
+  min-height: 100vh;
   /* max-height: 100vh; */
-  height: 100vh;
+  /* height: 100vh; */
   /* background-image: url(../../img/hero.webp); */
   /* background-size: cover; */
   /* background-position-y: center; */
   /* background-position: center; */
-  background-color: #F6F6F8;
+  background-color: #f6f6f8;
   box-sizing: border-box;
   padding: 3rem 5rem;
   padding-top: 8rem;
@@ -127,7 +127,6 @@
   /* background-color: #28285b; */
   background-color: #7b9ee9;
 
-
   border-radius: 1000px;
 
   padding: 0.5rem 1.5rem;
@@ -142,7 +141,7 @@
   #home {
     padding: 2rem 1rem;
     /* justify-content: center; */
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 
   #home .image-container {
@@ -151,5 +150,15 @@
 
   .hero header a {
     font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #home {
+    flex-direction: column;
+  }
+
+  #home .image-container {
+    max-width: 100%;
   }
 }

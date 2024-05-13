@@ -7,8 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import logo from "../img/logo.png";
-import Layout from "../layout";
+import maleImg from "../img/login-male.webp";
+import femaleImg from "../img/login-female.webp";
+
 const Login = () => {
   const [data, setData] = useState({
     email: "",
@@ -59,6 +60,9 @@ const Login = () => {
         onSubmit={submitHandler}
         autoComplete="off"
       >
+        <img src={maleImg} className={styles.maleImage} alt="male-img" />
+        <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
+
         <header>
           <h1 className={styles.headerTitle}>Service Station</h1>
         </header>
@@ -74,7 +78,7 @@ const Login = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={emailIcon} alt="" />
+            {/* <img src={emailIcon} alt="" /> */}
           </div>
         </div>
         <div>
@@ -88,7 +92,7 @@ const Login = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={passwordIcon} alt="" />
+            {/* <img src={passwordIcon} alt="" /> */}
           </div>
         </div>
 
@@ -109,6 +113,7 @@ const Login = () => {
           </span>
         </div>
       </form>
+
       <ToastContainer />
     </div>
   );
