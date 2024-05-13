@@ -11,7 +11,7 @@ function HomePage() {
   return (
     <section id="home">
       <div className="hero">
-        <header>
+        {/* <header>
           <div className="badge">
             <FontAwesomeIcon icon={faPhone} />
             <div>
@@ -28,7 +28,7 @@ function HomePage() {
               <a href="xxxxx">Damascus</a>
             </div>
           </div>
-        </header>
+        </header> */}
         <h4>
           <span className="dash"></span> Service Station
         </h4>

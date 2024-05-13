@@ -3,9 +3,9 @@ nav {
   top: 0;
   border-radius: 0 0 15px 15px;
   padding: 1.5rem 0;
-  background-color: hsla(239, 39%, 76%, 0.7);
+  background-color: #7b9ee9;
   width: 100%;
-  z-index: 100%;
+  z-index: 100;
 }
 
 nav .routes {

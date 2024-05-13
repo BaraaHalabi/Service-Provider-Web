@@ -1,12 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import services from "../../components/servicesData"; // Adjust the path as necessary
+import services from "../../components/servicesData";
 import Layout from "../../layout";
 import "./style.css";
 const ServiceDetailPage = () => {
   const { slug } = useParams();
-  const service = services.find((s) => s.slug === slug); // Find the service by slug
-
+  const service = services.find((s) => s.slug === slug);
   if (!service) {
     return <p>Service not found!</p>;
   }

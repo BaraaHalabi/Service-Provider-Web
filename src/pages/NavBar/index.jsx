@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-scroll";
 import logo from "../../img/logo.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-// import {
-//   faWhatsapp as faWhatsappBrand,
-//   faInstagram as faInstagramBrand,
-//   faLinkedin as faLinkedinBrand,
-// } from "@fortawesome/free-brands-svg-icons";
+
 import "./style.css";
 import "../../index.css";
 import { Link as RouterLink } from "react-router-dom";
@@ -37,13 +31,13 @@ function NavBar() {
             </Link>
           </div>
 
-          <img src={logo} alt="Logo" />
+          {/* <img src={logo} alt="Logo" /> */}
         </div>
         <div className="right-links">
-          <RouterLink to="/login">Login</RouterLink>
-          <RouterLink to="/sign-up" className="sign-up-link">
+          <RouterLink to="/login" target="_blank">Login</RouterLink>
+          {/* <RouterLink to="/sign-up" className="sign-up-link">
             Sign Up
-          </RouterLink>
+          </RouterLink> */}
         </div>
       </div>
 

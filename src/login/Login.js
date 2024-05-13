@@ -53,66 +53,64 @@ const Login = () => {
   };
 
   return (
-    <Layout>
-      <div className={styles.container}>
-        <form
-          className={`${styles.glass} ${styles.formLogin}`}
-          onSubmit={submitHandler}
-          autoComplete="off"
-        >
-          <header>
-            <h1 className={styles.headerTitle}>Service Station</h1>
-          </header>
-          <h2>Welcome!</h2>
+    <div className={styles.container}>
+      <form
+        className={`${styles.glass} ${styles.formLogin}`}
+        onSubmit={submitHandler}
+        autoComplete="off"
+      >
+        <header>
+          <h1 className={styles.headerTitle}>Service Station</h1>
+        </header>
+        <h2>Welcome!</h2>
+        <div>
           <div>
-            <div>
-              <input
-                type="text"
-                name="email"
-                value={data.email}
-                placeholder="E-mail"
-                onChange={changeHandler}
-                onFocus={focusHandler}
-                autoComplete="off"
-              />
-              <img src={emailIcon} alt="" />
-            </div>
+            <input
+              type="text"
+              name="email"
+              value={data.email}
+              placeholder="E-mail"
+              onChange={changeHandler}
+              onFocus={focusHandler}
+              autoComplete="off"
+            />
+            <img src={emailIcon} alt="" />
           </div>
+        </div>
+        <div>
           <div>
-            <div>
-              <input
-                type="password"
-                name="password"
-                value={data.password}
-                placeholder="Password"
-                onChange={changeHandler}
-                onFocus={focusHandler}
-                autoComplete="off"
-              />
-              <img src={passwordIcon} alt="" />
-            </div>
+            <input
+              type="password"
+              name="password"
+              value={data.password}
+              placeholder="Password"
+              onChange={changeHandler}
+              onFocus={focusHandler}
+              autoComplete="off"
+            />
+            <img src={passwordIcon} alt="" />
           </div>
+        </div>
 
-          <div>
-            <button type="submit">Login</button>
-            <span
-              style={{
-                color: "white",
-                textAlign: "center",
-                display: "inline-block",
-                width: "100%",
-              }}
-            >
-              Don't have an account?{" "}
-              <Link to="/sign-up" style={{ color: "white" }}>
-                Create account
-              </Link>
-            </span>
-          </div>
-        </form>
-        <ToastContainer />
-      </div>
-    </Layout>
+        <div>
+          <button type="submit">Login</button>
+          <span
+            style={{
+              color: "white",
+              textAlign: "center",
+              display: "inline-block",
+              width: "100%",
+            }}
+          >
+            Don't have an account?{" "}
+            <Link to="/sign-up" style={{ color: "white" }}>
+              Create account
+            </Link>
+          </span>
+        </div>
+      </form>
+      <ToastContainer />
+    </div>
   );
 };
 

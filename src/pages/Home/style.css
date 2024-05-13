@@ -20,7 +20,7 @@
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); */
 
   background-color: hsla(239, 39%, 76%, 0.7);
 
@@ -116,15 +116,6 @@
   color: white;
 
   user-select: none;
-}
-
-.dash {
-  width: 40px;
-  height: 3px;
-  border-radius: 3px;
-  background-color: #28285b;
-  display: inline-block;
-  margin-right: 1rem;
 }
 
 @media screen and (max-width: 640px) {
