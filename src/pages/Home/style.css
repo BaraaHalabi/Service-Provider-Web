@@ -1,13 +1,29 @@
 #home {
-  min-height: 100vh;
-  max-height: 100vh;
-  background-image: url(../../img/hero.webp);
-  background-size: cover;
+  /* min-height: 100vh; */
+  /* max-height: 100vh; */
+  height: 100vh;
+  /* background-image: url(../../img/hero.webp); */
+  /* background-size: cover; */
+  /* background-position-y: center; */
+  /* background-position: center; */
+  background-color: #F6F6F8;
   box-sizing: border-box;
   padding: 3rem 5rem;
   padding-top: 8rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  /* justify-content: space-evenly; */
+
+  box-sizing: border-box;
+}
+
+#home .image-container {
+  max-width: 50%;
+}
+
+#home .image-container img {
+  width: 100%;
 }
 
 .hero {
@@ -22,13 +38,14 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); */
 
-  background-color: hsla(239, 39%, 76%, 0.7);
+  /* background-color: hsla(239, 39%, 76%, 0.7); */
 
   border-radius: 15px;
 
-  padding: 1rem;
+  /* padding: 1rem; */
 
   width: fit-content;
+  /* flex: 1; */
 
   max-width: 450px;
 }
@@ -44,7 +61,8 @@
   border-radius: 10px;
 
   /* background-color: rgba(255, 255, 255, 0.5); */
-  background-color: rgba(0, 0, 0, 0.15);
+  /* background-color: rgba(0, 0, 0, 0.15); */
+  background-color: #ecc235;
   /* border: 2.5px solid rgba(255, 255, 255, 0.5); */
 
   display: flex;
@@ -76,7 +94,7 @@
 }
 
 .hero h4 {
-  color: white;
+  color: #201307;
 
   display: flex;
   align-items: center;
@@ -85,15 +103,15 @@
 }
 
 .hero h1 {
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 4rem;
+  line-height: 4rem;
 
-  color: #28285b;
+  color: #7b9ee9;
   user-select: none;
 }
 
 .hero h1 span {
-  color: white;
+  color: #201307;
 }
 
 .hero p {
@@ -105,8 +123,10 @@
   justify-content: center;
 }
 
-.hero footer .badge {
-  background-color: #28285b;
+.hero h4 .badge {
+  /* background-color: #28285b; */
+  background-color: #7b9ee9;
+
 
   border-radius: 1000px;
 
@@ -121,7 +141,12 @@
 @media screen and (max-width: 640px) {
   #home {
     padding: 2rem 1rem;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
+  }
+
+  #home .image-container {
+    max-width: 100%;
   }
 
   .hero header a {

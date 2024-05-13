@@ -7,31 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../../index.css";
 import "./style.css";
+import Hero from '../../img/hero.webp';
 function HomePage() {
   return (
     <section id="home">
       <div className="hero">
-        {/* <header>
-          <div className="badge">
-            <FontAwesomeIcon icon={faPhone} />
-            <div>
-              <span>Phone</span>
-              <br />
-              <a href="tel:+963940371512">+963 940 371 512</a>
-            </div>
-          </div>
-          <div className="badge">
-            <FontAwesomeIcon icon={faLocationDot} />
-            <div>
-              <span>Location</span>
-              <br />
-              <a href="xxxxx">Damascus</a>
-            </div>
-          </div>
-        </header> */}
-        <h4>
-          <span className="dash"></span> Service Station
-        </h4>
         <h1>
           <span>Easy to implement</span>
           <br />
@@ -40,13 +20,20 @@ function HomePage() {
         <p>
           Streamline your online presence with our tailored web solutions. From
           design to development, we're your digital partner for success.
+          {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita nesciunt iure consectetur atque reiciendis reprehenderit odit rerum beatae quaerat similique minus inventore, soluta doloribus voluptates. */}
         </p>
-        <footer>
+        <h4>
+          <span className="dash"></span> <div className="badge">Service Station</div>
+        </h4>
+        {/* <footer>
           <div className="badge">
-            <FontAwesomeIcon icon={faGlobe} />
-            Web services
+            <FontAwesomeIcon icon={faGlobe} /> Web services
           </div>
-        </footer>
+        </footer> */}
+      </div>
+      <div className="image-container">
+        {/* hero */}
+        <img src={Hero} alt="" />
       </div>
     </section>
   );
