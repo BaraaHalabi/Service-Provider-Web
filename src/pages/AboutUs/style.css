@@ -3,12 +3,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   background-color: white;
-  background-image: linear-gradient(
-    rgba(37, 13, 99, 0.25),
-    white,
-    white,
-    white
-  );
+  background-image: linear-gradient(#f6f6f8, white, white, white);
   min-height: 100vh;
   padding: 2rem 5rem;
 }

@@ -24,7 +24,6 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    IsAccepted: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -49,7 +48,6 @@ const SignUp = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
-      // Pushing data to database usuing PHP script
       const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${data.email.toLowerCase()}&password=${
         data.password
       }&register=true`;
@@ -77,7 +75,6 @@ const SignUp = () => {
         email: true,
         password: true,
         confirmPassword: true,
-        IsAccepted: false,
       });
     }
   };
@@ -85,18 +82,16 @@ const SignUp = () => {
   return (
     <div className={styles.container}>
       <form
-        className={`${styles.glass} ${styles.formLogin}`}
+        className={styles.formLogin}
         onSubmit={submitHandler}
         autoComplete="off"
       >
         <img src={maleImg} className={styles.maleImage} alt="male-img" />
         <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
 
-        <header>
-          <h1 className={styles.headerTitle}>Service Station</h1>
-        </header>
-        <h2>Sign Up</h2>
-        <div>
+        <h1 className={styles.headerTitle}>Service Station</h1>
+        <h2> Create Your Account and Dive In!</h2>
+        <div className={styles.inputWithIcon}>
           <div
             className={
               errors.name && touched.name
@@ -115,13 +110,13 @@ const SignUp = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={userIcon} alt="" /> */}
+            <img src={userIcon} alt="" />
           </div>
-          {errors.name && touched.name && (
+          {/* {errors.name && touched.name && (
             <span className={styles.error}>{errors.name}</span>
-          )}
+          )} */}
         </div>
-        <div>
+        <div className={styles.inputWithIcon}>
           <div
             className={
               errors.email && touched.email
@@ -135,18 +130,19 @@ const SignUp = () => {
               type="text"
               name="email"
               value={data.email}
-              placeholder="E-mail"
+              placeholder="     E-mail"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={emailIcon} alt="" /> */}
+            <img src={emailIcon} alt="" />
           </div>
-          {errors.email && touched.email && (
+
+          {/* {errors.email && touched.email && (
             <span className={styles.error}>{errors.email}</span>
-          )}
+          )} */}
         </div>
-        <div>
+        <div className={styles.inputWithIcon}>
           <div
             className={
               errors.password && touched.password
@@ -160,18 +156,20 @@ const SignUp = () => {
               type="password"
               name="password"
               value={data.password}
-              placeholder="Password"
+              placeholder="    Password"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={passwordIcon} alt="" /> */}
           </div>
+          {/* <img src={passwordIcon} alt="" />
+
           {errors.password && touched.password && (
             <span className={styles.error}>{errors.password}</span>
-          )}
+          )} */}
         </div>
-        <div>
+
+        <div className={styles.inputWithIcon}>
           <div
             className={
               errors.confirmPassword && touched.confirmPassword
@@ -187,16 +185,16 @@ const SignUp = () => {
               type="password"
               name="confirmPassword"
               value={data.confirmPassword}
-              placeholder="Confirm Password"
+              placeholder="    Confirm Password"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={passwordIcon} alt="" /> */}
+            <img src={passwordIcon} alt="" />
           </div>
-          {errors.confirmPassword && touched.confirmPassword && (
+          {/* {errors.confirmPassword && touched.confirmPassword && (
             <span className={styles.error}>{errors.confirmPassword}</span>
-          )}
+          )} */}
         </div>
 
         <div>
@@ -209,14 +207,14 @@ const SignUp = () => {
               width: "100%",
             }}
           >
-            Already have a account?{" "}
+            Already registered?&nbsp;
             <Link
               to="/login"
               style={{
                 color: "white",
               }}
             >
-              Sign In
+              Log In
             </Link>
           </span>
         </div>

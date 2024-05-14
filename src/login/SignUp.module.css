@@ -1,78 +1,91 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@200..800&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@200..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+* {
+  font-family: "Source Sans 3", sans-serif;
+}
 .container {
   padding: 10px 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* position: relative; */
-  /* background-color: red; */
-  /* background-image: url(../img/loginbg.png); */
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
-  /* background-size: cover; */
   background-color: #f6f6f8;
 }
 .maleImage {
-  height: 500px;
+  height: 390px;
   position: absolute;
   left: 0;
   transform: translateX(-80%);
   bottom: 0;
+  z-index: 99;
 }
 
 .femaleImage {
   position: absolute;
-  height: 490px;
+  height: 370px;
   bottom: 0;
   right: 0;
-  transform: translateX(calc(100% - 4px));
+  z-index: 99;
+  transform: translateX(calc(100% - 5px));
 }
-.glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
+
 .formLogin {
-  padding: 5rem;
+  padding: 1rem;
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   min-width: 20%;
   position: relative;
-  background-color: red;
+  background-color: #ff9748;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
-.formLogin > h2 {
-  margin-top: 10px;
-  margin-bottom: 28px;
+.formLogin > h1 {
   color: #ffffff;
-  font-size: 24px;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.formLogin > h2 {
+  color: #ffffff;
+  font-size: 17px;
   text-align: center;
 }
 
 .formLogin > div {
   margin-bottom: 15px;
-}
+ }
 
 .formLogin > div > div {
   position: relative;
 }
 
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon input {
+  padding-left: 30px;
+}
+
+.inputWithIcon img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .formLogin input[type="text"],
 .formLogin input[type="email"],
 .formLogin input[type="password"] {
-  background: #ffffff;
-  border: 2px solid #e8e8e8;
+  background-color: #f6f6f8;
+  border: 2px solid #f6f6f8;
   border-radius: 6px;
   padding: 15px 20px;
-  width: calc(100% - 40px);
+  width: calc(100% - 10px);
   font-size: 14px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -86,8 +99,7 @@
 .formLogin input[type="text"]:focus,
 .formLogin input[type="email"]:focus,
 .formLogin input[type="password"]:focus {
-  border: 2px solid #4a90e2;
-  border-color: #4a90e2; /* Example focus color */
+  border: 2px solid #f6f6f8;
   box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Soft glow effect */
 }
 
@@ -153,7 +165,6 @@
 .formLogin ::placeholder {
   color: #bfbbbb;
   font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .formLogin > div span.error {
@@ -170,17 +181,20 @@
 }
 
 .formLogin button[type="submit"] {
+  border-radius: 6px;
+
+  border: none;
+
+  margin-bottom: 10px;
   display: block;
   text-align: center;
-  width: 100%;
-  border-radius: 10px;
+  width: calc(100% - 10px);
   outline: 0;
-  border: none;
   color: #fff;
   padding: 10px;
-  margin: 15px;
   background-color: #4a90e2;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s;
   -webkit-transition: all 0.2s;

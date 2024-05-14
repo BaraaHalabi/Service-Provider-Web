@@ -56,43 +56,42 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <form
-        className={`${styles.glass} ${styles.formLogin}`}
+        className={styles.formLogin}
         onSubmit={submitHandler}
         autoComplete="off"
       >
         <img src={maleImg} className={styles.maleImage} alt="male-img" />
         <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
 
-        <header>
-          <h1 className={styles.headerTitle}>Service Station</h1>
-        </header>
-        <h2>Welcome!</h2>
+        <h1 className={styles.headerTitle}>Service Station</h1>
+        <h2>Hello Again! Ready to Dive In?</h2>
+
         <div>
-          <div>
+          <div className={styles.inputWithIcon}>
             <input
               type="text"
               name="email"
               value={data.email}
-              placeholder="E-mail"
+              placeholder="     E-mail"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={emailIcon} alt="" /> */}
+            <img src={emailIcon} alt="Email Icon" />
           </div>
         </div>
         <div>
-          <div>
+          <div className={styles.inputWithIcon}>
             <input
               type="password"
               name="password"
               value={data.password}
-              placeholder="Password"
+              placeholder="    Password"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            {/* <img src={passwordIcon} alt="" /> */}
+            <img src={passwordIcon} alt="Password Icon" />
           </div>
         </div>
 
@@ -106,9 +105,9 @@ const Login = () => {
               width: "100%",
             }}
           >
-            Don't have an account?{" "}
+            New here?&nbsp;
             <Link to="/sign-up" style={{ color: "white" }}>
-              Create account
+              Register Now
             </Link>
           </span>
         </div>
