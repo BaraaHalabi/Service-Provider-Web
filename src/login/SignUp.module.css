@@ -5,18 +5,20 @@
   font-family: "Source Sans 3", sans-serif;
 }
 .container {
-  padding: 10px 8rem;
+  height: 450px;
+  /* padding: 1px 8rem; */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-color: #f6f6f8;
 }
 .maleImage {
-  height: 390px;
+  height: 400px;
   position: absolute;
+  /* right: 30; */
   left: 0;
-  transform: translateX(-80%);
+  transform: translateX(-90%);
   bottom: 0;
   z-index: 99;
 }
@@ -55,7 +57,7 @@
 
 .formLogin > div {
   margin-bottom: 15px;
- }
+}
 
 .formLogin > div > div {
   position: relative;

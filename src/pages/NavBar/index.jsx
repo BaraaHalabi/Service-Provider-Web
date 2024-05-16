@@ -34,7 +34,9 @@ function NavBar() {
           {/* <img src={logo} alt="Logo" /> */}
         </div>
         <div className="right-links">
-          <RouterLink to="/login" target="_blank">Login</RouterLink>
+          <RouterLink to="/login" target="_blank" className="sign-up-link">
+            Login
+          </RouterLink>
           {/* <RouterLink to="/sign-up" className="sign-up-link">
             Sign Up
           </RouterLink> */}

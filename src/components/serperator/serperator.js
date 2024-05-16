@@ -3,13 +3,7 @@ import "./style.css";
 
 function Seperator() {
   return (
-    <svg
-      className="editorial"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 24 150 28"
-      preserveAspectRatio="none"
-    >
+    <svg className="editorial" viewBox="0 24 150 28" preserveAspectRatio="none">
       <defs>
         <path
           id="gentle-wave"

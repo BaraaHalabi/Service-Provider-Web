@@ -1,30 +1,9 @@
 // OurServicesPage.js
 import React from "react";
 import ServiceCard from "../../components/ServiceCard/index.tsx"; // Ensure this path is correct
+import services from "../../components/servicesData.js";
 import "./style.css";
 import { Link as RouterLink } from "react-router-dom";
-const services = [
-  {
-    title: "Jessica Parker",
-    imageSrc: "https://i.imgur.com/oYiTqum.jpg",
-    status: "1 hour ago",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?",
-  },
-  {
-    title: "kim Cattrall",
-    imageSrc: "https://i.imgur.com/2DhmtJ4.jpg",
-    status: "3 hours ago",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?",
-  },
-  {
-    title: "Another Service",
-    imageSrc: "https://i.imgur.com/2DhmtJ4.jpg",
-    status: "2 hours ago",
-    description: "Another service description.",
-  },
-];
 
 function OurServicesPage() {
   const limitedServices = services.slice(0, 3);
@@ -32,9 +11,9 @@ function OurServicesPage() {
   return (
     <section id="services">
       <header>
-        <h2>
+        <h3>
           <span className="dash"></span>Service Station
-        </h2>
+        </h3>
         <h1>
           <span className="dot"></span>Our Services
         </h1>
@@ -44,9 +23,9 @@ function OurServicesPage() {
           <ServiceCard
             key={index}
             title={service.title}
-            imageSrc={service.imageSrc}
-            status={service.status}
+            imageSrc={service.imgSrc}
             description={service.description}
+            slug={service.slug}
           />
         ))}
       </ul>

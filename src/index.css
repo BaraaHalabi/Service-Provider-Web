@@ -1,99 +1,32 @@
-@import "~@fortawesome/fontawesome-svg-core/styles.css";
+@import url("https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@200..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 html,
 body {
   margin: 0;
   padding: 0;
-
-  font-family: "Poppins", sans-serif;
-
-  background-color: #28285b;
-
+  background-color: #f6f6f8;
   box-sizing: border-box;
-
   scroll-behavior: smooth;
+  font-family: "Source Sans 3", sans-serif;
 }
 
 .dash {
   width: 40px;
   height: 3px;
   border-radius: 3px;
-  background-color: #7b9ee9;
+  background-color: #ff9748;
   display: inline-block;
   margin-right: 1rem;
 }
 
 .dot {
+  /* color:#201307 */
+
   width: 25px;
   height: 25px;
   background-color: transparent;
   border-radius: 25px;
-  border: 5px solid #28285b;
+  border: 5px solid #201307;
   display: inline-block;
   margin-right: 1rem;
-}
-
- 
-
-.guarantees {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  /* flex: 1; */
-
-  margin-top: 2rem;
-}
-
-.guarantee {
-  background-color: #a9aad9;
-
-  padding: 1.5rem;
-
-  border-radius: 15px;
-
-  flex: 1;
-
-  transition: 0.2s ease-in-out;
-
-  /* height: fit-content; */
-}
-
-.guarantee:hover {
-  scale: 1.02;
-}
-
-.guarantee header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 1rem;
-}
-
-.guarantee header h1 {
-  margin: 0;
-}
-
-.guarantee header i {
-  display: inline;
-
-  padding: 1rem;
-
-  font-size: 2rem;
-
-  background-color: #28285b;
-  color: white;
-
-  border-radius: 1000px;
-}
-
-/* ipad - mini laptops */
-@media screen and (max-width: 980px) {
-  .guarantees {
-    flex-direction: column;
-  }
-}
-
-/* mobile view */
-@media screen and (max-width: 640px) {
 }

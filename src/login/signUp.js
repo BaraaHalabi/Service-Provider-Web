@@ -162,11 +162,7 @@ const SignUp = () => {
               autoComplete="off"
             />
           </div>
-          {/* <img src={passwordIcon} alt="" />
-
-          {errors.password && touched.password && (
-            <span className={styles.error}>{errors.password}</span>
-          )} */}
+          <img src={passwordIcon} alt="" />
         </div>
 
         <div className={styles.inputWithIcon}>

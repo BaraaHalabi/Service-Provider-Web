@@ -8,7 +8,8 @@ import SignUp from "./login/signUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoreServicesPage from "./pages/MoreServices/index.tsx";
 import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
-import Seperator from "./components/serperator/serperator.js";
+// import Seperator from "./components/serperator/serperator.js";
+import PaymentPage from "./pages/Payment/index.tsx";
 export default function App() {
   return (
     <Router>
@@ -18,8 +19,10 @@ export default function App() {
           element={
             <Layout>
               <HomePage />
-              <Seperator />
+              {/* <Seperator /> */}
               <AboutUsPage />
+              {/* <Seperator /> */}
+
               <OurServicesPage />
             </Layout>
           }
@@ -28,6 +31,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/more-services" element={<MoreServicesPage />} />
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </Router>
   );

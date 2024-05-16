@@ -25,7 +25,13 @@
 #home .image-container img {
   width: 100%;
 }
+h3 {
+  color: #ff9748;
+  display: flex;
+  align-items: center;
 
+  font-size: 1.5rem;
+}
 .hero {
   /* background: linear-gradient(
     135deg,

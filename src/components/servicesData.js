@@ -25,7 +25,7 @@ const services = [
     price: "$49/month",
   },
   {
-    imgSrc: whiteBoardImg,
+    imgSrc: socialmediaImg,
     title: "Social Media Service",
     description: "Description 4",
     slug: generateSlug("Social Media Service"),
