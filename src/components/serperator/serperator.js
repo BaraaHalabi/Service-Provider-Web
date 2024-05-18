@@ -11,16 +11,16 @@ function Seperator() {
         />
       </defs>
       <g className="parallax1">
-        <use xlinkHref="#gentle-wave" x="50" y="3" fill="#f461c1" />
+        <use xlinkHref="#gentle-wave" x="50" y="3" fill="#f095af" />
       </g>
       <g className="parallax2">
-        <use xlinkHref="#gentle-wave" x="50" y="0" fill="#4579e2" />
+        <use xlinkHref="#gentle-wave" x="50" y="0" fill="#80afb4" />
       </g>
       <g className="parallax3">
-        <use xlinkHref="#gentle-wave" x="50" y="9" fill="#3461c1" />
+        <use xlinkHref="#gentle-wave" x="50" y="9" fill="#ff9748" />
       </g>
       <g className="parallax4">
-        <use xlinkHref="#gentle-wave" x="50" y="6" fill="#fff" />
+        <use xlinkHref="#gentle-wave" x="50" y="6" fill="#f6f6f8" />
       </g>
     </svg>
   );

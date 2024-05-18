@@ -30,18 +30,20 @@ nav .left-links {
   display: none;
 }
 .sign-up-link {
-  display: inline-block; /* Makes the link behave like a block element */
-  background-color: rgba(0, 0, 0, 0.5); /* Sets the background color to red */
-  color: white; /* Sets the text color to white for contrast */
-  padding: 10px 20px; /* Adds padding around the text */
-  text-decoration: none; /* Removes the underline from the link */
-  border-radius: 10px; /* Rounds the corners of the box */
-  transition: background-color 0.3s ease; /* Smoothens the background color change */
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .sign-up-link:hover {
-  background-color: rgba(0, 0, 0, 0.3); /* Darkens the red color on hover */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
 }
+
 nav .routes img {
   position: absolute;
 

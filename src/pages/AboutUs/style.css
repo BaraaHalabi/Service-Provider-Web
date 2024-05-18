@@ -3,8 +3,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   background-color: #f6f6f8;
-  /* background-image: linear-gradient(#f6f6f8 white, white, white); */
-
   min-height: 100vh;
   padding: 2rem 5rem;
 }
@@ -15,7 +13,6 @@
 }
 
 .about-us h3 {
-  color: #ff9748;
   display: flex;
   align-items: center;
 
@@ -28,14 +25,14 @@
 
   font-size: 3.8rem;
 
-  color: #201307;
+  color: #28285b;
 
   margin-top: 0.6rem;
   margin-bottom: 0;
 }
 
 .about-us h2 {
-  color: #80afb4;
+  color: #00a0fa;
 
   margin-top: 0;
 
@@ -60,13 +57,12 @@
 
   border-radius: 25px;
 
-  box-shadow: 0px 10px 25px 0px #201307;
-  -webkit-box-shadow: 0px 10px 25px 0px #4e4e4e4d;
-  -moz-box-shadow: 0px 10px 25px 0px rgba(151, 151, 151, 0.3);
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
 
   transition: 0.2s ease-in-out;
-  padding: 1rem;
-  /* height: 300px; */
+  padding: 2rem;
 }
 
 .about-us .image img:hover {

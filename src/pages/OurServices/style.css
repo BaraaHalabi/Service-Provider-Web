@@ -2,13 +2,10 @@
   min-height: 100vh;
   position: relative;
   background-color: #f6f6f8;
-  /* background-image: linear-gradient(to bottom, #f6f6f8, #ff9748); */
   z-index: 2;
-
-  padding: 1rem 5rem;
-
+  padding: 5rem;
+  padding-top: 0rem;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -22,7 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 0;
 }
 
@@ -30,8 +26,118 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 3rem;
-
   color: #201307;
+}
+
+.btn {
+  align-self: center;
+  padding-bottom: 2rem;
+}
+.glow-on-hover {
+  /* width: 90px; */
+  /* height: 30px; */
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  background: #ff9748;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 5rem;
+}
+
+.glow-on-hover:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #ff9748;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ff9748;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@media (max-width: 768px) {
+  #services {
+    padding: 1rem;
+  }
+
+  #services header h1 {
+    font-size: 2rem;
+  }
+
+  #services ul.cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #services ul.cards li {
+    width: 90%;
+    margin-bottom: 1rem;
+  }
+
+  #services ul.cards li:last-child {
+    margin-bottom: 0;
+  }
+
+  #services ul.cards li button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
 }

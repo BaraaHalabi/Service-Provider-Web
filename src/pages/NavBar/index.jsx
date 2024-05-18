@@ -26,9 +26,9 @@ function NavBar() {
             <Link to="services" spy={true} smooth={true} duration={50}>
               Services
             </Link>
-            <Link to="communication" spy={true} smooth={true} duration={200}>
+            {/* <Link to="communication" spy={true} smooth={true} duration={200}>
               Contact us
-            </Link>
+            </Link> */}
           </div>
 
           {/* <img src={logo} alt="Logo" /> */}

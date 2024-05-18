@@ -1,10 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPhone,
-  faLocationDot,
-  faGlobe,
-} from "@fortawesome/free-solid-svg-icons";
+
 import "../../index.css";
 import "./style.css";
 import Hero from "../../img/hero.webp";
@@ -31,7 +26,6 @@ function HomePage() {
         </footer> */}
       </div>
       <div className="image-container">
-        {/* hero */}
         <img src={Hero} alt="" />
       </div>
     </section>

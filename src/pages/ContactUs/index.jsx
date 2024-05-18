@@ -15,7 +15,6 @@ function ContactUsPage() {
     <section id="communication">
       <div className="contact-us-page">
         <ul>
-          {/* Use Link for internal navigation */}
           <li>
             <Link
               to="/#"

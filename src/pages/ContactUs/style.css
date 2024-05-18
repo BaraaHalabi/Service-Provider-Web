@@ -1,12 +1,14 @@
 /* General styles for the communication section */
 #communication {
   padding: 1rem 1rem;
-  background-color: linear-gradient(to bottom, #ff9748, #f6f6f8);
+
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 2rem;
+
+  /* background: linear-gradient(to top, #ff9748, #f6f6f8); */
 }
 
 @media screen and (max-width: 980px) {

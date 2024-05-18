@@ -1,10 +1,6 @@
 :root {
-  --surface-color: #fff;
+  --surface-color: #80afb4;
   --curve: 40;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
@@ -33,7 +29,10 @@ body {
 .card__image {
   width: 100%;
   /* height: auto; */
+
   height: 350px;
+
+  object-fit: cover;
 }
 
 .card__overlay {
@@ -92,7 +91,7 @@ body {
 .card__title {
   font-size: 1em;
   margin: 0 0 0.3em;
-  color: #6a515e;
+  color: #f6f6f8;
 }
 
 .card__tagline {
@@ -100,7 +99,7 @@ body {
   margin: 1em 0;
   font-family: "MockFlowFont";
   font-size: 0.8em;
-  color: #d7bdca;
+  color: #f6f6f8;
 }
 
 .card__status {
@@ -111,7 +110,7 @@ body {
 .card__description {
   padding: 0 2em 2em;
   margin: 0;
-  color: #d7bdca;
+  color: #f6f6f8;
   font-family: "MockFlowFont";
   display: -webkit-box;
   -webkit-box-orient: vertical;

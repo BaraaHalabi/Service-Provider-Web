@@ -188,9 +188,6 @@ const SignUp = () => {
             />
             <img src={passwordIcon} alt="" />
           </div>
-          {/* {errors.confirmPassword && touched.confirmPassword && (
-            <span className={styles.error}>{errors.confirmPassword}</span>
-          )} */}
         </div>
 
         <div>

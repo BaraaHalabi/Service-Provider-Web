@@ -8,8 +8,8 @@
   /* background-position: center; */
   background-color: #f6f6f8;
   box-sizing: border-box;
-  padding: 3rem 5rem;
-  padding-top: 8rem;
+  padding: 5rem;
+  padding-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,6 @@ h3 {
   color: #ff9748;
   display: flex;
   align-items: center;
-
   font-size: 1.5rem;
 }
 .hero {

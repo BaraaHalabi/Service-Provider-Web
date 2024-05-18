@@ -8,7 +8,7 @@ import SignUp from "./login/signUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoreServicesPage from "./pages/MoreServices/index.tsx";
 import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
-// import Seperator from "./components/serperator/serperator.js";
+import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
 export default function App() {
   return (
@@ -19,11 +19,12 @@ export default function App() {
           element={
             <Layout>
               <HomePage />
-              {/* <Seperator /> */}
+              <Seperator />
               <AboutUsPage />
-              {/* <Seperator /> */}
-
+              <Seperator />
               <OurServicesPage />
+
+              {/* <UserProfile /> */}
             </Layout>
           }
         />

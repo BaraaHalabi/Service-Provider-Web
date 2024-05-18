@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  faClock,
-  faDollarSign,
-  faPlug,
-} from "@fortawesome/free-solid-svg-icons";
-
+  faHandshake,
+  faShield,
+  faMoneyBillWaveAlt,
+} from "@fortawesome/free-solid-svg-icons"; // Import the icons
+import "../../index.css";
 import aboutus from "../../img/about.webp";
-import Guarantee from "../../components/guranatees/guarantee";
+import Guarantee from "../../components/guranatees/guarantee.jsx"; // Adjust the import path as necessary
 import "./style.css";
 function AboutUsPage() {
   return (
@@ -22,7 +22,7 @@ function AboutUsPage() {
             </h1>
             <h2>Easy to implement web services</h2>
             <p>
-              At Service Station, we're dedicated to crafting exceptional online
+              At Servicely, we're dedicated to crafting exceptional online
               experiences. With a team of creative designers and skilled
               developers, we deliver bespoke web solutions tailored to your
               needs.
@@ -38,17 +38,19 @@ function AboutUsPage() {
           </div>
         </div>
         <div className="guarantees">
-          <Guarantee title="Cost-Effective" icon={faDollarSign}>
-            We strive to offer our services at competitive prices without
-            compromising quality, ensuring value for money.
+          <Guarantee title="Trust" icon={faHandshake}>
+            Trust is our cornerstone. We prioritize transparency, reliability,
+            and integrity in every interaction, ensuring client satisfaction and
+            success.
           </Guarantee>
-          <Guarantee title="Efficient Time Management" icon={faClock}>
-            Our processes are designed to be efficient, saving you time and
-            ensuring your projects are completed promptly.
+          <Guarantee title="Security" icon={faShield}>
+            Security is paramount. We employ industry-leading measures to
+            safeguard your data, ensuring confidentiality and peace of mind.
           </Guarantee>
-          <Guarantee title="Smooth Integration" icon={faPlug}>
-            We ensure seamless integration of our services with your existing
-            systems, minimizing disruption and maximizing benefits.
+          <Guarantee title="Affordable" icon={faMoneyBillWaveAlt}>
+            Affordability is key. We offer competitive rates without
+            compromising quality, making top-notch web services accessible to
+            all.
           </Guarantee>
         </div>
       </section>
