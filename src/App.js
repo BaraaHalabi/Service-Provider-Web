@@ -10,6 +10,7 @@ import MoreServicesPage from "./pages/MoreServices/index.tsx";
 import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
 import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
+import UserProfile from "./pages/UserProfile/index.tsx";
 export default function App() {
   return (
     <Router>
@@ -18,16 +19,18 @@ export default function App() {
           path="/"
           element={
             <Layout>
-              <HomePage />
-              <Seperator />
-              <AboutUsPage />
-              <Seperator />
-              <OurServicesPage />
+              {/* <HomePage /> */}
+              {/* <Seperator /> */}
+              {/* <AboutUsPage /> */}
+              {/* <Seperator /> */}
+              {/* <OurServicesPage /> */}
 
               {/* <UserProfile /> */}
             </Layout>
           }
         />
+        <Route path="/profile" element={<UserProfile />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/more-services" element={<MoreServicesPage />} />
