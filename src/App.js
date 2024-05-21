@@ -19,18 +19,18 @@ export default function App() {
           path="/"
           element={
             <Layout>
-              {/* <HomePage /> */}
-              {/* <Seperator /> */}
-              {/* <AboutUsPage /> */}
-              {/* <Seperator /> */}
-              {/* <OurServicesPage /> */}
+              <HomePage />
+              <Seperator />
+              <AboutUsPage />
+              <Seperator />
+              <OurServicesPage />
+              <Seperator />
 
               {/* <UserProfile /> */}
             </Layout>
           }
         />
         <Route path="/profile" element={<UserProfile />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/more-services" element={<MoreServicesPage />} />
