@@ -29,7 +29,15 @@ export default function App() {
             </Layout>
           }
         />
-        <Route path="/profile" element={<UserProfile />} />
+
+        <Route
+          path="/profile"
+          element={
+            <Layout>
+              <UserProfile />
+            </Layout>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/more-services" element={<MoreServicesPage />} />
