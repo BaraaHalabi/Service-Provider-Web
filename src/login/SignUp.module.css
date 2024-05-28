@@ -70,18 +70,30 @@
 }
 
 .inputWithIcon input {
-  padding-left: 30px;
+  /* padding-left: 30px; */
+  padding-left: 2rem;
+  z-index: 100;
 }
 
-.inputWithIcon img {
+/* .inputWithIcon img {
   width: 20px;
   height: 20px;
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+} */
+.inputWithIcon .customIcon {
+  width: 15px;
+  height: 15px;
   position: absolute;
   left: 5px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 100;
+  color: #4e8ee6;
 }
-
 .formLogin input[type="text"],
 .formLogin input[type="email"],
 .formLogin input[type="password"] {

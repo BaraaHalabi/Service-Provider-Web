@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-//Icon
+import { useNavigate } from "react-router-dom";
+
 import userIcon from "../img/user.svg";
-import emailIcon from "../img/email.svg";
-import passwordIcon from "../img/password.svg";
+
 // Validate
 import { validate } from "./validate";
 // Styles
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
 // Toast
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { notify } from "./toast";
 //
 import { Link } from "react-router-dom";
@@ -18,7 +18,12 @@ import axios from "axios";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons"; // Import the icons
+
 const SignUp = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -47,36 +52,33 @@ const SignUp = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!Object.keys(errors).length) {
-      const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${data.email.toLowerCase()}&password=${
-        data.password
-      }&register=true`;
-      const pushData = async () => {
-        const responseA = axios.get(urlApi);
-        const response = await toast.promise(responseA, {
-          pending: "Check your data",
-          success: "Checked!",
-          error: "Something went wrong!",
-        });
-        if (response.data.ok) {
-          notify("You signed Up successfully", "success");
-        } else {
-          notify(
-            "You have already registered, log in to your account",
-            "warning"
-          );
-        }
-      };
-      pushData();
-    } else {
-      notify("Please Check fileds again", "error");
-      setTouched({
-        name: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
-      });
+
+    if (data.password !== data.confirmPassword) {
+      setErrors({ ...errors, confirmPassword: "Passwords do not match." });
+      return;
     }
+
+    const userData = {
+      name: data.name.trim(),
+      email: data.email.trim(),
+      password: data.password.trim(),
+      confirmPassword: data.confirmPassword.trim(),
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/api/register", userData)
+      .then((response) => {
+        if (response.status === 200) {
+          notify("You signed Up successfully", "success");
+          navigate("/");
+        } else {
+          notify("An error occurred during registration.", "error");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        notify("An unexpected error occurred.", "error");
+      });
   };
 
   return (
@@ -105,12 +107,12 @@ const SignUp = () => {
               type="text"
               name="name"
               value={data.name}
-              placeholder="Name"
+              placeholder=" Name"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={userIcon} alt="" />
+            <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
           </div>
           {/* {errors.name && touched.name && (
             <span className={styles.error}>{errors.name}</span>
@@ -130,12 +132,12 @@ const SignUp = () => {
               type="text"
               name="email"
               value={data.email}
-              placeholder="     E-mail"
+              placeholder="   E-mail"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={emailIcon} alt="" />
+            <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
           </div>
 
           {/* {errors.email && touched.email && (
@@ -162,7 +164,7 @@ const SignUp = () => {
               autoComplete="off"
             />
           </div>
-          <img src={passwordIcon} alt="" />
+          <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
         </div>
 
         <div className={styles.inputWithIcon}>
@@ -186,7 +188,7 @@ const SignUp = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={passwordIcon} alt="" />
+            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
           </div>
         </div>
 

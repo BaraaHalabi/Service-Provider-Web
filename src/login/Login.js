@@ -1,60 +1,105 @@
 import React, { useState } from "react";
-import emailIcon from "../img/email.svg";
-import passwordIcon from "../img/password.svg";
 import styles from "./SignUp.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
-
 const Login = () => {
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth();
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
+  const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
 
-  const chaeckData = (obj) => {
-    const { email, password } = obj;
-    const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${email.toLowerCase()}&password=${password}`;
-    const api = axios
-      .get(urlApi)
-      .then((response) => response.data)
-      .then((data) =>
-        data.ok
-          ? notify("You login to your account successfully", "success")
-          : notify("Your password or your email is wrong", "error")
-      );
-    toast.promise(api, {
-      pending: "Loading your data...",
-      success: false,
-      error: "Something went wrong!",
-    });
-  };
-
   const changeHandler = (event) => {
-    if (event.target.name === "IsAccepted") {
-      setData({ ...data, [event.target.name]: event.target.checked });
-    } else {
-      setData({ ...data, [event.target.name]: event.target.value });
-    }
+    const { name, value } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const focusHandler = (event) => {
-    setTouched({ ...touched, [event.target.name]: true });
+    const { name } = event.target;
+    setTouched((prevTouched) => ({
+      ...prevTouched,
+      [name]: true,
+    }));
+  };
+
+  const validateInput = (field, value) => {
+    let isValid = true;
+    let errorMessage = "";
+
+    switch (field) {
+      case "email":
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        isValid = emailRegex.test(value);
+        errorMessage = !isValid ? "Invalid email address." : "";
+        break;
+      case "password":
+        isValid = value.length >= 6; // Minimum 6 characters
+        errorMessage = !isValid
+          ? "Password must be at least 6 characters long."
+          : "";
+        break;
+      default:
+        break;
+    }
+
+    return { isValid, errorMessage };
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    chaeckData(data);
+
+    const { email, password } = data;
+
+    const { isValid: emailIsValid, errorMessage: emailError } = validateInput(
+      "email",
+      email
+    );
+    const { isValid: passwordIsValid, errorMessage: passwordError } =
+      validateInput("password", password);
+
+    if (!emailIsValid || !passwordIsValid) {
+      setErrors({ email: emailError, password: passwordError });
+      return;
+    }
+
+    const userData = {
+      email: email.trim(),
+      password: password.trim(),
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/api/user_login", userData)
+      .then((response) => {
+        if (response.status === 200) {
+          notify("You logged up successfully", "success");
+          setIsLoggedIn(true);
+          navigate("/");
+        } else {
+          notify("An error occurred.", "error");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        notify("Wrong email or password.", "error");
+      });
   };
 
   return (
-    
     <div className={styles.container}>
       <form
         className={styles.formLogin}
@@ -65,7 +110,7 @@ const Login = () => {
         <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
 
         <h1 className={styles.headerTitle}>Service Station</h1>
-        <h2>Hello Again! Ready to Dive In?</h2>
+        <h2>Hello Again Ready to Dive In?</h2>
 
         <div>
           <div className={styles.inputWithIcon}>
@@ -73,12 +118,12 @@ const Login = () => {
               type="text"
               name="email"
               value={data.email}
-              placeholder="     E-mail"
+              placeholder="  E-mail"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={emailIcon} alt="Email Icon" />
+            <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
           </div>
         </div>
         <div>
@@ -87,12 +132,12 @@ const Login = () => {
               type="password"
               name="password"
               value={data.password}
-              placeholder="    Password"
+              placeholder="  Password"
               onChange={changeHandler}
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <img src={passwordIcon} alt="Password Icon" />
+            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
           </div>
         </div>
 

@@ -79,6 +79,7 @@ nav a {
 nav a:hover {
   color: #a9aad9;
 }
+
 @media screen and (max-width: 980px) {
   nav {
     display: grid;
