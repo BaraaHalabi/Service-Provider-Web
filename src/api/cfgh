@@ -1,8 +1,0 @@
-//  useEffect(() => {
-//     fetchUserData()
-//   }, [])
-
-//   const fetchUserData = () => {
-//     apiService.onUsersUpdated.subscribe(setUserData)
-//     apiService.getUsers().then(setUserData).catch(console.log)
-//   }

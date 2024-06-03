@@ -80,6 +80,46 @@ nav a:hover {
   color: #a9aad9;
 }
 
+.dropdown-container {
+  position: relative;
+}
+
+.user-icon {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-size: 2em;
+  padding: 1px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu li button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 980px) {
   nav {
     display: grid;
