@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
+
 const Login = () => {
   const navigate = useNavigate();
   const { setIsLoggedIn } = useAuth();
@@ -86,7 +87,9 @@ const Login = () => {
       .post("http://127.0.0.1:8000/api/user_login", userData)
       .then((response) => {
         if (response.status === 200) {
-          notify("You logged up successfully", "success");
+          const token = response.data.token; // Assuming the token is returned in response.data.token
+          localStorage.setItem("token", token); // Save token to localStorage
+          notify("You logged in successfully", "success");
           setIsLoggedIn(true);
           navigate("/");
         } else {

@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import userIcon from "../img/user.svg";
-
-// Validate
 import { validate } from "./validate";
-// Styles
-import styles from "./SignUp.module.css";
-import "react-toastify/dist/ReactToastify.css";
-// Toast
-import { ToastContainer } from "react-toastify";
 import { notify } from "./toast";
-//
-import { Link } from "react-router-dom";
-// Axios
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "./SignUp.module.css";
 import axios from "axios";
-import maleImg from "../img/login-male.webp";
-import femaleImg from "../img/login-female.webp";
-
+import { useAuth } from "../auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons"; // Import the icons
-
+import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const SignUp = () => {
+  const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    isAccepted: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -39,178 +29,153 @@ const SignUp = () => {
   }, [data, touched]);
 
   const changeHandler = (event) => {
-    if (event.target.name === "IsAccepted") {
-      setData({ ...data, [event.target.name]: event.target.checked });
-    } else {
-      setData({ ...data, [event.target.name]: event.target.value });
-    }
+    const { name, value, type, checked } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const focusHandler = (event) => {
-    setTouched({ ...touched, [event.target.name]: true });
+    const { name } = event.target;
+    setTouched((prevTouched) => ({
+      ...prevTouched,
+      [name]: true,
+    }));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (data.password !== data.confirmPassword) {
-      setErrors({ ...errors, confirmPassword: "Passwords do not match." });
-      return;
-    }
-
-    const userData = {
-      name: data.name.trim(),
-      email: data.email.trim(),
-      password: data.password.trim(),
-      confirmPassword: data.confirmPassword.trim(),
-    };
-
-    axios
-      .post("http://127.0.0.1:8000/api/register", userData)
-      .then((response) => {
-        if (response.status === 200) {
-          notify("You signed Up successfully", "success");
-          navigate("/");
-        } else {
-          notify("An error occurred during registration.", "error");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        notify("An unexpected error occurred.", "error");
+    if (!Object.keys(errors).length) {
+      axios
+        .post("http://127.0.0.1:8000/api/user_register", data)
+        .then((response) => {
+          if (response.status === 201) {
+            const token = response.data.token; // Assuming the token is returned in response.data.token
+            localStorage.setItem("token", token); // Save token to localStorage
+            notify("You signed up successfully", "success");
+            setIsLoggedIn(true);
+            navigate("/");
+          } else {
+            notify("An error occurred.", "error");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          notify("Sign up failed.", "error");
+        });
+    } else {
+      notify("Invalid data!", "error");
+      setTouched({
+        name: true,
+        email: true,
+        password: true,
+        confirmPassword: true,
+        isAccepted: true,
       });
+    }
   };
 
   return (
     <div className={styles.container}>
-      <form
-        className={styles.formLogin}
-        onSubmit={submitHandler}
-        autoComplete="off"
-      >
-        <img src={maleImg} className={styles.maleImage} alt="male-img" />
-        <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
-
-        <h1 className={styles.headerTitle}>Service Station</h1>
-        <h2> Create Your Account and Dive In!</h2>
+      <form onSubmit={submitHandler} className={styles.formContainer}>
+        <h1 className={styles.header}>Sign Up</h1>
         <div className={styles.inputWithIcon}>
-          <div
+          <input
             className={
               errors.name && touched.name
-                ? styles.unCompleted
-                : !errors.name && touched.name
-                ? styles.completed
-                : undefined
+                ? styles.uncompleted
+                : styles.formInput
             }
-          >
-            <input
-              type="text"
-              name="name"
-              value={data.name}
-              placeholder=" Name"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
-          </div>
-          {/* {errors.name && touched.name && (
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={data.name}
+            onChange={changeHandler}
+            onFocus={focusHandler}
+          />
+          <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
+          {errors.name && touched.name && (
             <span className={styles.error}>{errors.name}</span>
-          )} */}
+          )}
         </div>
         <div className={styles.inputWithIcon}>
-          <div
+          <input
             className={
               errors.email && touched.email
-                ? styles.unCompleted
-                : !errors.email && touched.email
-                ? styles.completed
-                : undefined
+                ? styles.uncompleted
+                : styles.formInput
             }
-          >
-            <input
-              type="text"
-              name="email"
-              value={data.email}
-              placeholder="   E-mail"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
-          </div>
-
-          {/* {errors.email && touched.email && (
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={changeHandler}
+            onFocus={focusHandler}
+          />
+          <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
+          {errors.email && touched.email && (
             <span className={styles.error}>{errors.email}</span>
-          )} */}
+          )}
         </div>
         <div className={styles.inputWithIcon}>
-          <div
+          <input
             className={
               errors.password && touched.password
-                ? styles.unCompleted
-                : !errors.password && touched.password
-                ? styles.completed
-                : undefined
+                ? styles.uncompleted
+                : styles.formInput
             }
-          >
-            <input
-              type="password"
-              name="password"
-              value={data.password}
-              placeholder="    Password"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-          </div>
-          <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={data.password}
+            onChange={changeHandler}
+            onFocus={focusHandler}
+          />
+          <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
+          {errors.password && touched.password && (
+            <span className={styles.error}>{errors.password}</span>
+          )}
         </div>
-
         <div className={styles.inputWithIcon}>
-          <div
+          <input
             className={
               errors.confirmPassword && touched.confirmPassword
-                ? styles.unCompleted
-                : !errors.confirmPassword && touched.confirmPassword
-                ? styles.completed
-                : !errors.confirmPassword && touched.confirmPassword
-                ? styles.completed
-                : undefined
+                ? styles.uncompleted
+                : styles.formInput
             }
-          >
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={data.confirmPassword}
+            onChange={changeHandler}
+            onFocus={focusHandler}
+          />
+          <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
+          {errors.confirmPassword && touched.confirmPassword && (
+            <span className={styles.error}>{errors.confirmPassword}</span>
+          )}
+        </div>
+        <div className={styles.formCheckbox}>
+          <label>
             <input
-              type="password"
-              name="confirmPassword"
-              value={data.confirmPassword}
-              placeholder="    Confirm Password"
+              type="checkbox"
+              name="isAccepted"
+              checked={data.isAccepted}
               onChange={changeHandler}
               onFocus={focusHandler}
-              autoComplete="off"
             />
-            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
-          </div>
+            I accept the terms and conditions
+          </label>
+          {errors.isAccepted && touched.isAccepted && (
+            <span className={styles.error}>{errors.isAccepted}</span>
+          )}
         </div>
-
-        <div>
-          <button type="submit">Create Account</button>
-          <span
-            style={{
-              color: "white",
-              textAlign: "center",
-              display: "inline-block",
-              width: "100%",
-            }}
-          >
-            Already registered?&nbsp;
-            <Link
-              to="/login"
-              style={{
-                color: "white",
-              }}
-            >
-              Log In
-            </Link>
+        <div className={styles.formButtons}>
+          <button type="submit">Sign Up</button>
+          <span>
+            Already have an account? <Link to="/login">Login</Link>
           </span>
         </div>
       </form>

@@ -11,13 +11,10 @@ const UserProfile = () => {
 
   return (
     <div className="profile-container">
-      {/* Profile Header */}
       <div className="profile-header">
-        {/* Profile Image */}
         <div className="profile-img">
           <img src={pic} width="200" alt="Profile" />
         </div>
-        {/* User Name and Address */}
         <div className="profile-nav-info">
           <h3 className="user-name">Leee Bassam</h3>
           <div className="address">
@@ -28,7 +25,6 @@ const UserProfile = () => {
         </div>
       </div>
 
-      {/* Main Body */}
       <div className="main-bd">
         {/* <div className="left-side">
           <div className="profile-side">
@@ -41,9 +37,7 @@ const UserProfile = () => {
           </div> */}
         {/* </div> */}
 
-        {/* Right Side */}
         <div className="right-side">
-          {/* Navigation */}
           <div className="nav">
             <ul>
               <li
@@ -66,20 +60,10 @@ const UserProfile = () => {
               </li>
             </ul>
           </div>
-          {/* Profile Body */}
           <div className="profile-body">
-            <div className={`tab ${activeTab === 0 ? "active" : ""}`}>
-              {" "}
-              {/* Content for Personal Info */}
-            </div>
-            <div className={`tab ${activeTab === 1 ? "active" : ""}`}>
-              {" "}
-              {/* Content for Services */}
-            </div>
-            <div className={`tab ${activeTab === 2 ? "active" : ""}`}>
-              {" "}
-              {/* Content for Settings */}
-            </div>
+            <div className={`tab ${activeTab === 0 ? "active" : ""}`}> </div>
+            <div className={`tab ${activeTab === 1 ? "active" : ""}`}> </div>
+            <div className={`tab ${activeTab === 2 ? "active" : ""}`}> </div>
           </div>
         </div>
       </div>

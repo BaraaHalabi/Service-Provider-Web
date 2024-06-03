@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link as RouterLink, NavLink } from "react-router-dom";
+import { Link as RouterLink, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
 import "./style.css";
 import "../../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons"; // Use faUserCircle for the profile icon
-import { useAuth } from "../../auth.js";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 function NavBar({ isLoggedIn, handleLogout }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -36,6 +37,34 @@ function NavBar({ isLoggedIn, handleLogout }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownVisible]);
+
+  const handleProfileClick = () => {
+    closeDropdown();
+    navigate("/user-profile");
+  };
+
+  const handleLogoutClick = () => {
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.removeItem("token");
+          handleLogout();
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
+  };
 
   return (
     <nav className="nav">
@@ -68,24 +97,10 @@ function NavBar({ isLoggedIn, handleLogout }) {
               {dropdownVisible && (
                 <ul className="dropdown-menu">
                   <li>
-                    <button
-                      onClick={() => {
-                        closeDropdown();
-                        // Add navigation to profile page if needed
-                      }}
-                    >
-                      Profile
-                    </button>
+                    <button onClick={handleProfileClick}>Profile</button>
                   </li>
                   <li>
-                    <button
-                      onClick={() => {
-                        closeDropdown();
-                        handleLogout();
-                      }}
-                    >
-                      Log Out
-                    </button>
+                    <button onClick={handleLogoutClick}>Log Out</button>
                   </li>
                 </ul>
               )}

@@ -11,7 +11,7 @@ import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
 import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
 import UserProfile from "./pages/UserProfile/index.tsx";
-
+import DocPage from "./pages/documentation/index.jsx";
 export default function App() {
   return (
     <Router>
@@ -29,15 +29,6 @@ export default function App() {
             </Layout>
           }
         />
-
-        <Route
-          path="/profile"
-          element={
-            <Layout>
-              <UserProfile />
-            </Layout>
-          }
-        />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/more-services" element={<MoreServicesPage />} />
@@ -50,6 +41,16 @@ export default function App() {
           }
         />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/doc-page" element={<DocPage />} />
+
+        <Route
+          path="/user-profile"
+          element={
+            <Layout>
+              <UserProfile />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   );
