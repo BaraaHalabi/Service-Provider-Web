@@ -12,6 +12,8 @@ import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
 import UserProfile from "./pages/UserProfile/index.tsx";
 import DocPage from "./pages/documentation/index.jsx";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFoundPage from "./pages/NotFount/index.jsx";
 export default function App() {
   return (
     <Router>
@@ -40,17 +42,46 @@ export default function App() {
             </Layout>
           }
         />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/doc-page" element={<DocPage />} />
 
+        {/* Protect the /payment, /doc-page, and /user-profile routes */}
+        <Route
+          path="/payment"
+          element={
+            <ProtectedRoute
+              element={() => (
+                <Layout>
+                  <PaymentPage />
+                </Layout>
+              )}
+            />
+          }
+        />
+        <Route
+          path="/doc-page"
+          element={
+            <ProtectedRoute
+              element={() => (
+                <Layout>
+                  <DocPage />
+                </Layout>
+              )}
+            />
+          }
+        />
         <Route
           path="/user-profile"
           element={
-            <Layout>
-              <UserProfile />
-            </Layout>
+            <ProtectedRoute
+              element={() => (
+                <Layout>
+                  <UserProfile />
+                </Layout>
+              )}
+            />
           }
         />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

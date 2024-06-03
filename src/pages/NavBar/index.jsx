@@ -57,7 +57,7 @@ function NavBar({ isLoggedIn, handleLogout }) {
       .then((response) => {
         if (response.status === 200) {
           localStorage.removeItem("token");
-          handleLogout();
+          handleLogout(); // Update the isLoggedIn state in the parent component
           navigate("/");
         }
       })

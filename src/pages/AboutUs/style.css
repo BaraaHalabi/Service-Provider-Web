@@ -6,7 +6,9 @@
   min-height: 100vh;
   padding: 2rem 5rem;
 }
-
+.guarantees {
+  color: white;
+}
 .about-us {
   display: flex;
   align-items: center;
