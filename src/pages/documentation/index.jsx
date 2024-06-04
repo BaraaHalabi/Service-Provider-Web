@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
+import axios from "axios"; // Ensure axios is installed
 
 const DocPage = () => {
+  const [userName, setUserName] = useState(""); // Initialize state for user name
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = localStorage.getItem("userID");
+        const token = localStorage.getItem("token");
+
+        if (!userId || !token) {
+          console.error("User ID or Token is undefined or null");
+          return;
+        }
+
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const userData = response.data;
+        const { name } = userData;
+
+        setUserName(name); // Update the state with the user's name
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <section className={styles.page}>
       <h1>
-        Animated transition tabs
-        <br />
-        with checkboxes
+        Thank you {userName}! <br></br> for buying our services.
+        <br></br> You can now have the API & Script{" "}
       </h1>
 
       <div className={styles.tabs}>

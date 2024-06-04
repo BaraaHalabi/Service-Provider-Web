@@ -43,7 +43,6 @@ export default function App() {
           }
         />
 
-        {/* Protect the /payment, /doc-page, and /user-profile routes */}
         <Route
           path="/payment"
           element={

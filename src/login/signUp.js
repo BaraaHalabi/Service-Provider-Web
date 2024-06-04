@@ -4,12 +4,13 @@ import { validate } from "./validate";
 import { notify } from "./toast";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./SignUp.module.css";
 import axios from "axios";
 import { useAuth } from "../auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import styles from "./SignUp.module.css";
+
 const SignUp = () => {
   const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();

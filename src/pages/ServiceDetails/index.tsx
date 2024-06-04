@@ -81,7 +81,7 @@ const ServiceDetailPage: React.FC = () => {
   }
 
   return (
-    <Layout>
+    <div>
       {service && (
         <div className={styles.roundedBackgroundBox}>
           <div className={styles.leftRoundedColumn}>
@@ -105,7 +105,7 @@ const ServiceDetailPage: React.FC = () => {
           </div>
         </div>
       )}
-    </Layout>
+    </div>
   );
 };
 
