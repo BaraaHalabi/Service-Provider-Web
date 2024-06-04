@@ -1,9 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import pic from "../../img/analytics.png";
+import axios from "axios";
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = localStorage.getItem("userID");
+        const token = localStorage.getItem("token");
+
+        if (!userId) {
+          console.error("User ID is undefined or null");
+          return;
+        }
+
+        if (!token) {
+          console.error("Token is undefined or null");
+          return;
+        }
+
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const userData = response.data;
+        const { name } = userData;
+
+        setUserName(name);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -16,7 +55,7 @@ const UserProfile = () => {
           <img src={pic} width="200" alt="Profile" />
         </div>
         <div className="profile-nav-info">
-          <h3 className="user-name">Leee Bassam</h3>
+          <h3 className="user-name">{userName}</h3>
           <div className="address">
             <p id="state" className="state">
               Syria, AL-tall.
@@ -26,17 +65,6 @@ const UserProfile = () => {
       </div>
 
       <div className="main-bd">
-        {/* <div className="left-side">
-          <div className="profile-side">
-            <p className="mobile-no">
-              <i className="fa fa-phone"></i>+963 940371512
-            </p>
-            <p className="user-mail">
-              <i className="fa fa-envelope"></i> leem199xx@gmail.com
-            </p>
-          </div> */}
-        {/* </div> */}
-
         <div className="right-side">
           <div className="nav">
             <ul>

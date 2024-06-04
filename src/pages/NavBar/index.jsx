@@ -44,25 +44,42 @@ function NavBar({ isLoggedIn, handleLogout }) {
   };
 
   const handleLogoutClick = () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.error("No token found in localStorage");
+      return;
+    }
+
+    console.log("Token:", token);
+
     axios
       .post(
         "http://127.0.0.1:8000/api/logout",
         {},
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
       .then((response) => {
         if (response.status === 200) {
+          console.log("Logout successful:", response.data);
           localStorage.removeItem("token");
+          localStorage.removeItem("userID");
           handleLogout(); // Update the isLoggedIn state in the parent component
-          navigate("/");
+          navigate("/login");
+        } else {
+          console.error("Logout response status not 200:", response);
         }
       })
       .catch((error) => {
-        console.error("Logout error:", error);
+        if (error.response) {
+          console.error("Logout error response:", error.response);
+        } else {
+          console.error("Logout error:", error.message);
+        }
       });
   };
 
