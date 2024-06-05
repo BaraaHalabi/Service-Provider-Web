@@ -1,14 +1,12 @@
-/* General styles for the communication section */
 #communication {
   padding: 1rem 1rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 2rem;
 
-  /* background: linear-gradient(to top, #ff9748, #f6f6f8); */
+  background-color: #f6f6f8;
 }
 
 @media screen and (max-width: 980px) {
@@ -38,9 +36,9 @@
 }
 
 .contact-us-page a {
-  color: #ff9748; /* Link color */
+  color: #ff9748;
   text-decoration: none;
-  transition: color 0.3s ease-in-out; /* Smooth color transition */
+  transition: color 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +46,7 @@
 }
 
 .contact-us-page a:hover {
-  color: #ffffff; /* Change hover color to white for contrast */
+  color: #ffffff;
 }
 
 .contact-us-page li:last-child {

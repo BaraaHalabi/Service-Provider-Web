@@ -6,32 +6,13 @@
   letter-spacing: 0.01em;
   line-height: 1.6em;
   margin: 0;
+  height: 100vh;
   padding: 100px;
 }
 
 h1 {
   font-size: 40px;
   line-height: 1.2em;
-}
-
-.made-with {
-  background: #fd264f;
-  color: #201307;
-  display: block;
-  font-size: 12px;
-  line-height: 1em;
-  margin: 0;
-  padding: 5px 110px;
-  position: fixed;
-  top: 20px;
-  right: -100px;
-  text-align: center;
-  text-decoration: none;
-  transform: rotate(45deg);
-}
-
-.documentation {
-  color: #fd264f;
 }
 
 button:focus,
@@ -42,12 +23,7 @@ select:focus {
 }
 
 .tabs {
-  display: block;
-  display: -webkit-flex;
-  display: -moz-flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: 0;
   overflow: hidden;
@@ -55,9 +31,9 @@ select:focus {
 
 .tabs [class^="tab"] label,
 .tabs [class*=" tab"] label {
-  color: #efedef;
+  background-color: red;
+  color: white; /* Adjust color to white for better contrast */
   cursor: pointer;
-
   display: block;
   font-size: 1.1em;
   font-weight: 300;

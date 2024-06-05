@@ -49,7 +49,7 @@ const Login = () => {
         errorMessage = !isValid ? "Invalid email address." : "";
         break;
       case "password":
-        isValid = value.length >= 6; // Minimum 6 characters
+        isValid = value.length >= 6;
         errorMessage = !isValid
           ? "Password must be at least 6 characters long."
           : "";
