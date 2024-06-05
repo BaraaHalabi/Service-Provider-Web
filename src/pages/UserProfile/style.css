@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
 
 .profile-container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 70px auto;
-  background: #fff;
+  background: #f6f6f8;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -32,7 +31,6 @@
   margin-right: 20px;
 }
 
-
 .profile-img img {
   border-radius: 50%;
   width: 100%;
@@ -46,6 +44,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.user-name {
+  color: #201307;
 }
 
 .profile-nav-info h3 {
@@ -91,7 +93,6 @@
 }
 
 .profile-side p i {
-  color: #e40046;
   margin-right: 10px;
 }
 
@@ -137,6 +138,34 @@
   border-radius: 8px;
 }
 
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.services-table th,
+.services-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.services-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e4c1f9;
+  color: white;
+}
+
+.services-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.services-table tr:hover {
+  background-color: #ddd;
+}
+
 @media (max-width: 768px) {
   .profile-header {
     flex-direction: column;
@@ -160,4 +189,26 @@
   .profile-nav-info .address {
     font-size: 0.9rem;
   }
+}
+
+/* New CSS for Personal Info */
+.personal-info {
+  margin-top: 20px;
+}
+
+.personal-info h2 {
+  font-family: "Bree Serif", serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.personal-info p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.personal-info p strong {
+  color: #555;
 }

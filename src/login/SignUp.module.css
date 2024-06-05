@@ -217,7 +217,7 @@
 }
 
 .formLogin button[type="submit"]:hover {
-  background-color: #357abd; 
+  background-color: #357abd;
   cursor: pointer;
 }
 
@@ -242,5 +242,18 @@
   .formLoginQ input[type="email"],
   .formLogin input[type="password"] {
     padding: 12px 15px;
+  }
+}
+.spinner {
+  font-size: 24px; /* Adjust size as needed */
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

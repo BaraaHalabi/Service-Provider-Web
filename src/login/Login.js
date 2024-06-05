@@ -14,7 +14,11 @@ import femaleImg from "../img/login-female.webp";
 
 const Login = () => {
   const navigate = useNavigate();
+
   const { setIsLoggedIn } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -64,6 +68,7 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
     const { email, password } = data;
 
     const { isValid: emailIsValid, errorMessage: emailError } = validateInput(
@@ -75,6 +80,7 @@ const Login = () => {
 
     if (!emailIsValid || !passwordIsValid) {
       setErrors({ email: emailError, password: passwordError });
+      setIsLoading(false);
       return;
     }
 
@@ -97,15 +103,19 @@ const Login = () => {
         } else {
           notify("An error occurred.", "error");
         }
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
         notify("Wrong email or password.", "error");
+        setIsLoading(false);
       });
   };
 
   return (
     <div className={styles.container}>
+      {isLoading && <div className={styles.loadingIndicator}>Loading...</div>}
+
       <form
         className={styles.formLogin}
         onSubmit={submitHandler}
@@ -113,10 +123,8 @@ const Login = () => {
       >
         <img src={maleImg} className={styles.maleImage} alt="male-img" />
         <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
-
         <h1 className={styles.headerTitle}>Service Station</h1>
         <h2>Hello Again Ready to Dive In?</h2>
-
         <div>
           <div className={styles.inputWithIcon}>
             <input
@@ -145,7 +153,6 @@ const Login = () => {
             <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
           </div>
         </div>
-
         <div>
           <button type="submit">Login</button>
           <span
