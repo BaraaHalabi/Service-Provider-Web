@@ -1,4 +1,4 @@
-`import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import pic from "../../img/analytics.png";
 import axios from "axios";
@@ -11,7 +11,7 @@ const UserProfile = () => {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("Syria");
   const [password, setPassword] = useState("");
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -109,6 +109,12 @@ const UserProfile = () => {
     }
   };
 
+  interface Service {
+    service_name: string;
+    usage: number;
+    expiry_date: string;
+    created_at?: string;
+  }
   return (
     <div className="profile-container">
       <div className="profile-header">
@@ -238,4 +244,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-`

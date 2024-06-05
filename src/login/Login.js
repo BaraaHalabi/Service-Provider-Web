@@ -8,23 +8,27 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
 
 const Login = () => {
   const navigate = useNavigate();
-
   const { setIsLoggedIn } = useAuth();
-
   const [isLoading, setIsLoading] = useState(false);
-
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+  const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -67,10 +71,8 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
     setIsLoading(true);
     const { email, password } = data;
-
     const { isValid: emailIsValid, errorMessage: emailError } = validateInput(
       "email",
       email
@@ -84,10 +86,7 @@ const Login = () => {
       return;
     }
 
-    const userData = {
-      email: email.trim(),
-      password: password.trim(),
-    };
+    const userData = { email: email.trim(), password: password.trim() };
 
     axios
       .post("http://127.0.0.1:8000/api/user_login", userData)
@@ -114,8 +113,6 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      {isLoading && <div className={styles.loadingIndicator}>Loading...</div>}
-
       <form
         className={styles.formLogin}
         onSubmit={submitHandler}
@@ -138,11 +135,14 @@ const Login = () => {
             />
             <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
           </div>
+          {errors.email && touched.email && (
+            <span className="error">{errors.email}</span>
+          )}
         </div>
         <div>
           <div className={styles.inputWithIcon}>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // Toggle input type based on showPassword
               name="password"
               value={data.password}
               placeholder="  Password"
@@ -150,8 +150,16 @@ const Login = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />{" "}
+            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
+            <FontAwesomeIcon
+              icon={showPassword ? faEyeSlash : faEye} // Change icon based on showPassword state
+              className={styles.customIcon}
+              onClick={togglePasswordVisibility} // Toggle password visibility on click
+            />
           </div>
+          {errors.password && touched.password && (
+            <span className="error">{errors.password}</span>
+          )}
         </div>
         <div>
           <button type="submit">Login</button>
@@ -170,7 +178,6 @@ const Login = () => {
           </span>
         </div>
       </form>
-
       <ToastContainer />
     </div>
   );
