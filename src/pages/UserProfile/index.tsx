@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
+`import React, { useState, useEffect } from "react";
 import "./style.css";
 import pic from "../../img/analytics.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  interface Service {
-    service_name: string;
-    usage: number;
-    expiry_date: string;
-    created_at?: string;
-  }
-  const [services, setServices] = useState<Service[]>([]);
+  const [country, setCountry] = useState("Syria");
+  const [password, setPassword] = useState("");
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -46,7 +43,6 @@ const UserProfile = () => {
 
         setUserName(name);
         setEmail(email);
-        setCountry("Syria");
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -77,6 +73,40 @@ const UserProfile = () => {
 
   const handleTabClick = (index) => {
     setActiveTab(index);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userId = localStorage.getItem("userID");
+      const token = localStorage.getItem("token");
+
+      const userData = {
+        name: userName,
+        email: email,
+        password: password,
+      };
+
+      const response = await axios.put(
+        `http://127.0.0.1:8000/api/users/${userId}`,
+        userData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("User is updated successfully");
+      } else {
+        toast.error("An error occurred.");
+      }
+    } catch (error) {
+      console.error("Error updating user data:", error);
+      toast.error("Failed to update user.");
+    }
   };
 
   return (
@@ -166,13 +196,46 @@ const UserProfile = () => {
               </table>
             </div>
             <div className={`tab ${activeTab === 2 ? "active" : ""}`}>
-              {/* Settings content here */}
+              <h2>Settings</h2>
+              <form onSubmit={handleUpdate}>
+                <div className="form-group">
+                  <label htmlFor="name">Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <button type="submit">Update Info</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };
 
 export default UserProfile;
+`
