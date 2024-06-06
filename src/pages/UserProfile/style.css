@@ -225,7 +225,7 @@
   color: var(--glow-color);
   cursor: pointer;
   padding: 0.35em 1em;
-  margin-left: 30em;
+  /* margin-left: 30em; */
   margin-top: 1em;
   border: 0.15em solid #ff9748;
   border-radius: 0.45em;

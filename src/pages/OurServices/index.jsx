@@ -4,6 +4,7 @@ import "./style.css";
 import whiteBoardImg from "../../img/whiteboarding.png";
 import socialmediaImg from "../../img/socialmedia.jpg";
 import chatImg from "../../img/chat.png";
+import axios from "axios";
 
 const imageMapping = {
   "Analytics Service": whiteBoardImg,
@@ -30,15 +31,14 @@ function OurServicesPage() {
   const [hasMore, setHasMore] = useState(false);
   const [page, setPage] = useState(1);
   const [showLessVisible, setShowLessVisible] = useState(false);
-
   useEffect(() => {
     const fetchServices = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/services");
-        const services = await response.json();
+        const response = await axios.get("http://127.0.0.1:8000/api/services");
+        const services = response.data;
         const mappedServices = services.map((service) => ({
-          imgSrc: imageMapping[service.name] || whiteBoardImg, // Default image if not found
+          imgSrc: imageMapping[service.name] || whiteBoardImg,
           title: service.name,
           description: service.description,
           slug: generateSlug(service.name),

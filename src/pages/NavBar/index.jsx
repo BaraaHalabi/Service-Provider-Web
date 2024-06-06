@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-function NavBar({ isLoggedIn, handleLogout }) {
+function NavBar({ isLoggedIn }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -46,17 +46,10 @@ function NavBar({ isLoggedIn, handleLogout }) {
   const handleLogoutClick = () => {
     const token = localStorage.getItem("token");
 
-    if (!token) {
-      console.error("No token found in localStorage");
-      return;
-    }
-
-    console.log("Token:", token);
-
     axios
       .post(
         "http://127.0.0.1:8000/api/logout",
-        {},
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -65,12 +58,10 @@ function NavBar({ isLoggedIn, handleLogout }) {
       )
       .then((response) => {
         if (response.status === 200) {
-          console.log("Logout successful:", response.data);
           localStorage.removeItem("token");
           localStorage.removeItem("userID");
-          handleLogout(); // Update the isLoggedIn state in the parent component
           navigate("/login");
-          window.location.reload(); // Refresh the page to update the state
+          window.location.reload();
         } else {
           console.error("Logout response status not 200:", response);
         }
