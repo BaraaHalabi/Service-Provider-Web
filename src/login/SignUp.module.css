@@ -183,10 +183,13 @@
 }
 
 .eyeIcon {
-  /* right: 10rem; */
-  padding-left: 14rem;
   cursor: pointer;
-  right: 100px;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4e8ee6;
+  font-size: 0.8rem;
 }
 
 .Toastify__toast--success {

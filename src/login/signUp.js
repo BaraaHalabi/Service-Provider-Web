@@ -30,7 +30,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    // confirmPassword: "",
     isAccepted: false,
   });
 

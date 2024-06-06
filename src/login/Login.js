@@ -159,7 +159,7 @@ const Login = () => {
             />
             <FontAwesomeIcon
               icon={showPassword ? faEye : faEyeSlash}
-              className={`${styles.customIcon} ${styles.eyeIcon}`}
+              className={styles.eyeIcon}
               onClick={togglePasswordVisibility}
             />
           </div>
