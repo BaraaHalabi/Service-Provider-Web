@@ -21,14 +21,17 @@ import femaleImg from "../img/login-female.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons"; // Import the icons
+import { useAuth } from "../auth";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuth;
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    isAccepted: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -51,34 +54,34 @@ const SignUp = () => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault();
-
-    if (data.password !== data.confirmPassword) {
-      setErrors({ ...errors, confirmPassword: "Passwords do not match." });
-      return;
-    }
-
-    const userData = {
-      name: data.name.trim(),
-      email: data.email.trim(),
-      password: data.password.trim(),
-      confirmPassword: data.confirmPassword.trim(),
-    };
-
-    axios
-      .post("http://127.0.0.1:8000/api/register", userData)
-      .then((response) => {
-        if (response.status === 200) {
-          notify("You signed Up successfully", "success");
-          navigate("/");
-        } else {
-          notify("An error occurred during registration.", "error");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        notify("An unexpected error occurred.", "error");
+    if (!Object.keys(errors).length) {
+      axios
+        .post("http://127.0.0.1:8000/api/register", data)
+        .then((response) => {
+          if (response.status === 201) {
+            const token = response.data.token;
+            localStorage.setItem("token", token);
+            notify("You signed up successfully", "success");
+            setIsLoggedIn(true);
+            navigate("/");
+          } else {
+            notify("An error occurred.", "error");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          notify("Sign up failed.", "error");
+        });
+    } else {
+      notify("Invalid data!", "error");
+      setTouched({
+        name: true,
+        email: true,
+        password: true,
+        confirmPassword: true,
+        isAccepted: true,
       });
+    }
   };
 
   return (
