@@ -166,31 +166,27 @@
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
 }
+
 .inputWithIcon {
   position: relative;
-  margin-bottom: 15px;
 }
 
 .inputWithIcon input {
-  width: calc(100% - 30px);
-  padding: 10px;
-  padding-left: 30px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .customIcon {
   position: absolute;
-  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #999;
-  cursor: pointer;
 }
 
-.customIcon:last-child {
-  left: auto;
-  right: 10px;
+.eyeIcon {
+  /* right: 10rem; */
+  padding-left: 14rem;
+  cursor: pointer;
+  right: 100px;
 }
 
 .Toastify__toast--success {

@@ -24,7 +24,7 @@ const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -52,7 +52,7 @@ const Login = () => {
 
     switch (field) {
       case "email":
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-0-9.-]+\.[A-Z]{2,}$/i;
         isValid = emailRegex.test(value);
         errorMessage = !isValid ? "Invalid email address." : "";
         break;
@@ -133,7 +133,10 @@ const Login = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              className={`${styles.customIcon} ${styles.emailIcon}`}
+            />
           </div>
           {errors.email && touched.email && (
             <span className="error">{errors.email}</span>
@@ -142,7 +145,7 @@ const Login = () => {
         <div>
           <div className={styles.inputWithIcon}>
             <input
-              type={showPassword ? "text" : "password"} // Toggle input type based on showPassword
+              type={showPassword ? "text" : "password"}
               name="password"
               value={data.password}
               placeholder="  Password"
@@ -150,11 +153,14 @@ const Login = () => {
               onFocus={focusHandler}
               autoComplete="off"
             />
-            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
             <FontAwesomeIcon
-              icon={showPassword ? faEyeSlash : faEye} // Change icon based on showPassword state
-              className={styles.customIcon}
-              onClick={togglePasswordVisibility} // Toggle password visibility on click
+              icon={faLock}
+              className={`${styles.customIcon} ${styles.lockIcon}`}
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEye : faEyeSlash}
+              className={`${styles.customIcon} ${styles.eyeIcon}`}
+              onClick={togglePasswordVisibility}
             />
           </div>
           {errors.password && touched.password && (

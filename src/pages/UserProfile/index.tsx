@@ -13,6 +13,12 @@ const UserProfile = () => {
   const [password, setPassword] = useState("");
   const [services, setServices] = useState<Service[]>([]);
 
+  interface Service {
+    service_name: string;
+    usage: number;
+    expiry_date: string;
+    created_at?: string;
+  }
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -88,8 +94,8 @@ const UserProfile = () => {
         password: password,
       };
 
-      const response = await axios.put(
-        `http://127.0.0.1:8000/api/users/${userId}`,
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/user_update/${userId}`,
         userData,
         {
           headers: {
@@ -109,12 +115,6 @@ const UserProfile = () => {
     }
   };
 
-  interface Service {
-    service_name: string;
-    usage: number;
-    expiry_date: string;
-    created_at?: string;
-  }
   return (
     <div className="profile-container">
       <div className="profile-header">
@@ -231,7 +231,11 @@ const UserProfile = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button type="submit">Update Info</button>
+                <button className="glowing-btn">
+                  <span className="glowing-txt">
+                    UP<span className="faulty-letter">DA</span>TE
+                  </span>
+                </button>
               </form>
             </div>
           </div>

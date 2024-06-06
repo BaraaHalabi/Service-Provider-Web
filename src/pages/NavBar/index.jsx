@@ -70,6 +70,7 @@ function NavBar({ isLoggedIn, handleLogout }) {
           localStorage.removeItem("userID");
           handleLogout(); // Update the isLoggedIn state in the parent component
           navigate("/login");
+          window.location.reload(); // Refresh the page to update the state
         } else {
           console.error("Logout response status not 200:", response);
         }
