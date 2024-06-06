@@ -6,7 +6,7 @@
   letter-spacing: 0.01em;
   line-height: 1.6em;
   margin: 0;
-  height: 100vh;
+  height: 100%;
   padding: 100px;
 }
 
@@ -27,19 +27,6 @@ select:focus {
   flex-wrap: wrap;
   margin: 0;
   overflow: hidden;
-}
-
-.tabs [class^="tab"] label,
-.tabs [class*=" tab"] label {
-  background-color: red;
-  color: white; /* Adjust color to white for better contrast */
-  cursor: pointer;
-  display: block;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1em;
-  padding: 2rem 0;
-  text-align: center;
 }
 
 .tabs [class^="tab"] [type="radio"],
