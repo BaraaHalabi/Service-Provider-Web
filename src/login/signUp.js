@@ -25,6 +25,7 @@ import {
   faUser,
   faEye,
   faEyeSlash,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 // Auth
 import { useAuth } from "../auth";
@@ -41,6 +42,7 @@ const SignUp = () => {
     profileImage: null,
   });
 
+  const [imagePreview, setImagePreview] = useState(null);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +56,9 @@ const SignUp = () => {
     if (event.target.name === "isAccepted") {
       setData({ ...data, [event.target.name]: event.target.checked });
     } else if (event.target.name === "profileImage") {
-      setData({ ...data, profileImage: event.target.files[0] });
+      const file = event.target.files[0];
+      setData({ ...data, profileImage: file });
+      setImagePreview(URL.createObjectURL(file));
     } else {
       setData({ ...data, [event.target.name]: event.target.value });
     }
@@ -122,6 +126,31 @@ const SignUp = () => {
         <h1 className={styles.headerTitle}>Service Station</h1>
         <h2> Create Your Account and Dive In!</h2>
 
+        <div className={styles.profileImageContainer}>
+          {imagePreview ? (
+            <img
+              src={imagePreview}
+              className={styles.profileImage}
+              alt="Profile"
+            />
+          ) : (
+            <img
+              src={userIcon}
+              className={styles.profileImage}
+              alt="Default Profile"
+            />
+          )}
+          <label className={styles.imageInputLabel}>
+            <FontAwesomeIcon icon={faPlus} className={styles.plusIcon} />
+            <input
+              type="file"
+              name="profileImage"
+              onChange={changeHandler}
+              className={styles.imageInput}
+            />
+          </label>
+        </div>
+
         <div className={styles.inputWithIcon}>
           <div>
             <input
@@ -185,15 +214,11 @@ const SignUp = () => {
             />
             <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
             <FontAwesomeIcon
-              icon={showPassword ? faEye : faEyeSlash}
+              icon={showConfirmPassword ? faEye : faEyeSlash}
               className={styles.eyeIcon}
-              onClick={togglePasswordVisibility}
+              onClick={toggleConfirmPasswordVisibility}
             />
           </div>
-        </div>
-
-        <div className={styles.inputWithIcon}>
-          <input type="file" name="profileImage" onChange={changeHandler} />
         </div>
 
         <div>
