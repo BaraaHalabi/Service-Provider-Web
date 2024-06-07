@@ -8,6 +8,7 @@ const DocPage = () => {
   const [api, setApi] = useState("");
   const userId = localStorage.getItem("userID");
   const token = localStorage.getItem("token");
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -77,19 +78,33 @@ const DocPage = () => {
       </h1>
 
       <div className={styles.tabs}>
-        <div className={styles["tab-2"]}>
-          <label htmlFor="tab2-1">Script</label>
-          <input id="tab2-1" name="tabs-two" type="radio" defaultChecked />
-          <div>
-            <p>{script}</p>
-          </div>
-        </div>
-        <div className={styles["tab-2"]}>
-          <label htmlFor="tab2-2">API</label>
-          <input id="tab2-2" name="tabs-two" type="radio" />
-          <div>
-            <p>{api}</p>
-          </div>
+        <ul>
+          <li
+            onClick={() => setActiveTab(0)}
+            className={activeTab === 0 ? styles.active : ""}
+          >
+            Script
+          </li>
+          <li
+            onClick={() => setActiveTab(1)}
+            className={activeTab === 1 ? styles.active : ""}
+          >
+            API
+          </li>
+        </ul>
+        <div className={styles.tabContent}>
+          {activeTab === 0 && (
+            <div>
+              <h4>scrrrippttto </h4>
+              {/* <p>{script}</p> */}
+            </div>
+          )}
+          {activeTab === 1 && (
+            <div>
+              <h4>Apiiioo </h4>
+              <p>{api}</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

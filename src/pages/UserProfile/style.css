@@ -1,5 +1,25 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
+.tab-2 {
+  width: 50%;
+}
+
+.tab-2 input[type="radio"] + label {
+  display: block;
+  width: 200%;
+  margin-left: 200%;
+  transition: all 0.3s ease-in-out;
+}
+
+.tab-2 input[type="radio"]:checked + label {
+  margin-left: 0;
+}
+
+.tab-2:last-child input[type="radio"] + label {
+  margin-left: 100%;
+}
+
+.tab-2:last-child input[type="radio"]:checked + label {
+  margin-left: -100%;
+}
 
 .profile-container {
   height: 100%;

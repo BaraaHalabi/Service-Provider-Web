@@ -1,3 +1,40 @@
+/* New styles for the DocPage tabs */
+.tabs ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.tabs ul li {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+
+.tabs ul li:hover,
+.tabs ul li.active {
+  background: #80afb4;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.tabContent.active {
+  display: block;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
 .page {
   background-color: #f6f6f8;
   font-family: "Roboto", Arial, Helvetica, sans-serif;

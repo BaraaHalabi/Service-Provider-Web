@@ -57,21 +57,21 @@ function NavBar({ isLoggedIn }) {
     //   })
     //   .then((response) => {
     //     if (response.status === 200) {
-          localStorage.removeItem("token");
-          localStorage.removeItem("userID");
-          navigate("/login");
-          // window.location.reload();
-      //   } else {
-      //     console.error("Logout response status not 200:", response);
-      //   }
-      // })
-      // .catch((error) => {
-      //   if (error.response) {
-      //     console.error("Logout error response:", error.response);
-      //   } else {
-      //     console.error("Logout error:", error.message);
-      //   }
-      // });
+    localStorage.removeItem("token");
+    localStorage.removeItem("userID");
+    navigate("/login");
+    // window.location.reload();
+    //   } else {
+    //     console.error("Logout response status not 200:", response);
+    //   }
+    // })
+    // .catch((error) => {
+    //   if (error.response) {
+    //     console.error("Logout error response:", error.response);
+    //   } else {
+    //     console.error("Logout error:", error.message);
+    //   }
+    // });
   };
 
   return (
