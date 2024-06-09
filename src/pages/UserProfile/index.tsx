@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import pic from "../../img/analytics.png";
+import pic from "../../img/whiteboarding.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
