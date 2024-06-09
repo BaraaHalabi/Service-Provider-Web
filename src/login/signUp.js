@@ -138,6 +138,7 @@ const SignUp = () => {
                 name="profileImage"
                 onChange={changeHandler}
                 className={styles.imageInput}
+                accept="image"
               />
             </label>
           </div>

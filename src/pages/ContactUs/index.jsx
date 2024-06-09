@@ -25,17 +25,7 @@ function ContactUsPage() {
               <FontAwesomeIcon icon={faTwitter} />
             </Link>
           </li>
-          <li>
-            <Link
-              to="/#"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Check out our Codepen projects"
-            >
-              <FontAwesomeIcon icon={faCodepen} />
-            </Link>
-          </li>
-          {/* Use standard <a> tag for external links like email */}
+
           <li>
             <a
               href="mailto:julesforrest@gmail.com"
@@ -45,16 +35,7 @@ function ContactUsPage() {
               <FontAwesomeIcon icon={faEnvelope} aria-label="Email us" />
             </a>
           </li>
-          <li>
-            <Link
-              to="/#"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View our Dribbble portfolio"
-            >
-              <FontAwesomeIcon icon={faDribbble} />
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/#"
