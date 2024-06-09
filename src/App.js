@@ -14,7 +14,11 @@ import UserProfile from "./pages/UserProfile/index.tsx";
 import DocPage from "./pages/documentation/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFoundPage from "./pages/NotFount/index.jsx";
+import { useState } from "react";
+
 export default function App() {
+  const [profileImage, setProfileImage] = useState(null);
+
   return (
     <Router>
       <Routes>
@@ -32,7 +36,10 @@ export default function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route
+          path="/sign-up"
+          element={<SignUp setProfileImage={setProfileImage} />}
+        />
         <Route path="/more-services" element={<MoreServicesPage />} />
         <Route
           path="/services/:slug"

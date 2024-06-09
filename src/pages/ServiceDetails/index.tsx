@@ -81,7 +81,7 @@ const ServiceDetailPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="service-details-page">
       {service && (
         <div className={styles.roundedBackgroundBox}>
           <div className={styles.leftRoundedColumn}>

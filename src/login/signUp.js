@@ -21,7 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../auth";
 
-const SignUp = () => {
+const SignUp = ({ setProfileImage }) => {
   const navigate = useNavigate();
   const { setIsLoggedIn } = useAuth();
   const [data, setData] = useState({
@@ -83,6 +83,7 @@ const SignUp = () => {
             localStorage.setItem("token", token);
             notify("You signed up successfully", "success");
             setIsLoggedIn(true);
+            setProfileImage(imagePreview || userIcon); // Update the profile image state
             navigate("/");
           } else {
             notify("An error occurred.", "error");
@@ -138,7 +139,7 @@ const SignUp = () => {
                 name="profileImage"
                 onChange={changeHandler}
                 className={styles.imageInput}
-                accept="image"
+                accept="image/png, image/jpeg"
               />
             </label>
           </div>

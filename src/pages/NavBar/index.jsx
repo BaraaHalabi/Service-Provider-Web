@@ -5,9 +5,10 @@ import "./style.css";
 import "../../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+// import axios from "axios";
+import userIcon from "../../img/userDefaultImage.png";
 
-function NavBar({ isLoggedIn }) {
+function NavBar({ isLoggedIn, profileImage }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ function NavBar({ isLoggedIn }) {
             </NavLink>
           </div>
         </div>
+
         <div className="right-links">
           {!isLoggedIn ? (
             <RouterLink to="/login" className="sign-up-link">
