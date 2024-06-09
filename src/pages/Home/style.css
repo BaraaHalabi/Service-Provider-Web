@@ -1,14 +1,12 @@
 #home {
   min-height: 100vh;
-
   background-color: #f6f6f8;
   box-sizing: border-box;
   padding: 5rem;
-  padding-top: 8rem;
+  padding-top: 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   box-sizing: border-box;
 }
 
