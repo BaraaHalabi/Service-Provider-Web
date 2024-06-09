@@ -9,8 +9,8 @@ body {
   padding: 1rem;
   border-radius: 25px;
   display: flex;
-  /* flex-wrap: wrap; */
-  height: 100vh;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 .leftRoundedColumn {
