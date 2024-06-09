@@ -4,19 +4,17 @@
 }
 .container {
   height: 450px;
-  /* padding: 1px 8rem; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* min-height: 100vh; */
   background-color: #f6f6f8;
   padding-top: 8rem;
+  position: relative;
 }
 
 .maleImage {
   height: 400px;
   position: absolute;
-  /* right: 30; */
   left: 0;
   transform: translateX(-90%);
   bottom: 0;
@@ -181,23 +179,82 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .profileImageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
   margin-bottom: 20px;
 }
 
 .profileImage {
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
+  border: 2px solid #ddd;
+}
+
+.imageInputLabel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #007bff;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.plusIcon {
+  color: white;
 }
 
 .imageInput {
-  display: block;
+  display: none;
+}
+
+.inputWithIcon {
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputWithIcon input {
+  width: calc(100% - 30px);
+  padding: 10px;
+  padding-left: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.formLogin button[type="submit"] {
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #4a90e2;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.formLogin button[type="submit"]:hover {
+  background-color: #357abd;
+}
+
+.headerTitle {
+  color: #ffffff;
+  text-align: center;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 12px;
 }
 
 .eyeIcon {
@@ -273,19 +330,11 @@
   cursor: pointer;
 }
 
-.terms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  font-size: 12px;
-}
-.headerTitle {
-  color: #ffffff;
-  text-align: center;
-}
-
 @media (max-width: 678px) {
+  .maleImage,
+  .femaleImage {
+    display: none;
+  }
   .formLogin {
     min-width: 280px;
     padding: 25px;
@@ -295,4 +344,13 @@
   .formLogin input[type="password"] {
     padding: 12px 15px;
   }
+}
+.formRow {
+  display: flex;
+  align-items: center;
+}
+
+.nameInput {
+  flex: 1;
+  margin-left: 10px;
 }

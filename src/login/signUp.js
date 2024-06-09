@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import userIcon from "../img/user.svg";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
-
-// Validate
 import { validate } from "./validate";
-// Styles
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
-// Toast
 import { ToastContainer } from "react-toastify";
 import { notify } from "./toast";
-// React Router
 import { Link } from "react-router-dom";
-// Axios
 import axios from "axios";
-// FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -27,7 +19,6 @@ import {
   faEyeSlash,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-// Auth
 import { useAuth } from "../auth";
 
 const SignUp = () => {
@@ -126,43 +117,45 @@ const SignUp = () => {
         <h1 className={styles.headerTitle}>Service Station</h1>
         <h2> Create Your Account and Dive In!</h2>
 
-        <div className={styles.profileImageContainer}>
-          {imagePreview ? (
-            <img
-              src={imagePreview}
-              className={styles.profileImage}
-              alt="Profile"
-            />
-          ) : (
-            <img
-              src={userIcon}
-              className={styles.profileImage}
-              alt="Default Profile"
-            />
-          )}
-          <label className={styles.imageInputLabel}>
-            <FontAwesomeIcon icon={faPlus} className={styles.plusIcon} />
-            <input
-              type="file"
-              name="profileImage"
-              onChange={changeHandler}
-              className={styles.imageInput}
-            />
-          </label>
-        </div>
+        <div className={styles.formRow}>
+          <div className={styles.profileImageContainer}>
+            {imagePreview ? (
+              <img
+                src={imagePreview}
+                className={styles.profileImage}
+                alt="Profile"
+              />
+            ) : (
+              <img
+                src={userIcon}
+                className={styles.profileImage}
+                alt="Default Profile"
+              />
+            )}
+            <label className={styles.imageInputLabel}>
+              <FontAwesomeIcon icon={faPlus} className={styles.plusIcon} />
+              <input
+                type="file"
+                name="profileImage"
+                onChange={changeHandler}
+                className={styles.imageInput}
+              />
+            </label>
+          </div>
 
-        <div className={styles.inputWithIcon}>
-          <div>
-            <input
-              type="text"
-              name="name"
-              value={data.name}
-              placeholder="Name"
-              onChange={changeHandler}
-              onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
+          <div className={`${styles.inputWithIcon} ${styles.nameInput}`}>
+            <div>
+              <input
+                type="text"
+                name="name"
+                value={data.name}
+                placeholder="Name"
+                onChange={changeHandler}
+                onFocus={focusHandler}
+                autoComplete="off"
+              />
+              <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
+            </div>
           </div>
         </div>
 
