@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  /* background-color: #f6f6f8; */
+  background-color: #f6f6f8;
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: "Source Sans 3", sans-serif;

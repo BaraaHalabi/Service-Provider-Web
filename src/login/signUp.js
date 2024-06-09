@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import userIcon from "../img/user.svg";
+import userIcon from "../img/userDefaultImage.png";
 import maleImg from "../img/login-male.webp";
 import femaleImg from "../img/login-female.webp";
 import { validate } from "./validate";
@@ -115,7 +115,6 @@ const SignUp = () => {
         <img src={femaleImg} className={styles.femaleImage} alt="female-img" />
 
         <h1 className={styles.headerTitle}>Service Station</h1>
-        <h2> Create Your Account and Dive In!</h2>
 
         <div className={styles.formRow}>
           <div className={styles.profileImageContainer}>

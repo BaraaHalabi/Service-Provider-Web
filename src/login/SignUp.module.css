@@ -67,20 +67,10 @@
 }
 
 .inputWithIcon input {
-  /* padding-left: 30px; */
-  padding-left: 2rem;
-  z-index: 100;
+  width: calc(100% - 30px);
+  margin-left: 1px;
 }
 
-/* .inputWithIcon img {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-} */
 .inputWithIcon .customIcon {
   width: 15px;
   height: 15px;
@@ -91,6 +81,7 @@
   z-index: 100;
   color: #4e8ee6;
 }
+
 .formLogin input[type="text"],
 .formLogin input[type="email"],
 .formLogin input[type="password"] {
@@ -113,7 +104,7 @@
 .formLogin input[type="email"]:focus,
 .formLogin input[type="password"]:focus {
   border: 2px solid #f6f6f8;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Soft glow effect */
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }
 
 .completed,
@@ -165,29 +156,14 @@
   transition: all 0.2s ease-in-out;
 }
 
-.inputWithIcon {
-  position: relative;
-}
-
-.inputWithIcon input {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.customIcon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .profileImageContainer {
   position: relative;
   margin-bottom: 20px;
 }
 
 .profileImage {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ddd;
@@ -198,32 +174,18 @@
   bottom: 0;
   right: 0;
   background-color: #007bff;
-  border-radius: 50%;
-  padding: 5px;
+  border-radius: 20px;
+  padding: 0.1rem;
   cursor: pointer;
 }
 
 .plusIcon {
+  /* padding: 0.1rem; */
   color: white;
 }
 
 .imageInput {
   display: none;
-}
-
-.inputWithIcon {
-  width: 100%;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.inputWithIcon input {
-  width: calc(100% - 30px);
-  padding: 10px;
-  padding-left: 30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
 }
 
 .formLogin button[type="submit"] {
@@ -247,6 +209,7 @@
 .headerTitle {
   color: #ffffff;
   text-align: center;
+  padding-bottom: 0.5rem;
 }
 
 .terms {
@@ -352,5 +315,5 @@
 
 .nameInput {
   flex: 1;
-  margin-left: 10px;
+  margin-left: 20px;
 }
