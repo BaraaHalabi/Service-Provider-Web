@@ -6,19 +6,21 @@ import "react-toastify/dist/ReactToastify.css";
 import pic from "../../img/userDefaultImage.png";
 import CountryList from "../../components/Countries/CountryComponent";
 
+interface Service {
+  service_name: string;
+  usage: number;
+  expiry_date: string;
+  created_at?: string;
+}
+
 const UserProfile = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [password, setPassword] = useState("");
-  const [services, setServices] = useState([]);
-  interface Service {
-    service_name: string;
-    usage: number;
-    expiry_date: string;
-    created_at?: string;
-  }
+  const [activeTab, setActiveTab] = useState<number>(0);
+  const [userName, setUserName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [services, setServices] = useState<Service[]>([]);
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -73,11 +75,11 @@ const UserProfile = () => {
     fetchUserServices();
   }, []);
 
-  const handleTabClick = (index) => {
+  const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {

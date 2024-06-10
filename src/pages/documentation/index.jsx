@@ -95,13 +95,13 @@ const DocPage = () => {
         <div className={styles.tabContent}>
           {activeTab === 0 && (
             <div>
-              <h4>scrrrippttto </h4>
-              {/* <p>{script}</p> */}
+              {/* <h4>scrrrippttto </h4> */}
+              <p>{script}</p>
             </div>
           )}
           {activeTab === 1 && (
             <div>
-              <h4>Apiiioo </h4>
+              {/* <h4>Apiiioo </h4> */}
               <p>{api}</p>
             </div>
           )}
