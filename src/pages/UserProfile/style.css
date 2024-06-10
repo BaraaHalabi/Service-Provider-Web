@@ -304,7 +304,23 @@
 .glowing-btn:hover:after {
   opacity: 1;
 }
+.form-group {
+  margin-bottom: 15px;
+}
 
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 @keyframes faulty-flicker {
   0% {
     opacity: 0.1;

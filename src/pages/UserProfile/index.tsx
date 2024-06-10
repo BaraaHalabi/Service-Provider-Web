@@ -122,11 +122,7 @@ const UserProfile = () => {
         </div>
         <div className="profile-nav-info">
           <h3 className="user-name">{userName}</h3>
-          <div className="address">
-            <p id="state" className="state">
-              {location}{" "}
-            </p>
-          </div>
+          <div className="address">{location}</div>
         </div>
       </div>
 
