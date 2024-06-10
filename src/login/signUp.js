@@ -19,7 +19,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../auth";
-import countryList from "../components/Countrylist";
+import countryList from "../components/Countries/Countrylist";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = ({ setProfileImage, setIsLoggedIn }) => {

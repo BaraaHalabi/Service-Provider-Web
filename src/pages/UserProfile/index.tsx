@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import pic from "../../img/whiteboarding.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import pic from "../../img/userDefaultImage.png";
+import CountryList from "../../components/Countries/CountryComponent";
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("Syria");
+  const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
-  const [services, setServices] = useState<Service[]>([]);
-
+  const [services, setServices] = useState([]);
   interface Service {
     service_name: string;
     usage: number;
@@ -25,13 +25,8 @@ const UserProfile = () => {
         const userId = localStorage.getItem("userID");
         const token = localStorage.getItem("token");
 
-        if (!userId) {
-          console.error("User ID is undefined or null");
-          return;
-        }
-
-        if (!token) {
-          console.error("Token is undefined or null");
+        if (!userId || !token) {
+          console.error("User ID or Token is undefined or null");
           return;
         }
 
@@ -45,10 +40,11 @@ const UserProfile = () => {
         );
 
         const userData = response.data;
-        const { name, email } = userData;
+        const { name, email, location } = userData;
 
         setUserName(name);
         setEmail(email);
+        setLocation(location);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -92,6 +88,7 @@ const UserProfile = () => {
         name: userName,
         email: email,
         password: password,
+        location: location,
       };
 
       const response = await axios.post(
@@ -125,7 +122,7 @@ const UserProfile = () => {
           <h3 className="user-name">{userName}</h3>
           <div className="address">
             <p id="state" className="state">
-              Syria, AL-tall.
+              {location}{" "}
             </p>
           </div>
         </div>
@@ -166,7 +163,7 @@ const UserProfile = () => {
                   <strong>Email:</strong> {email}
                 </p>
                 <p>
-                  <strong>Country:</strong> {country}
+                  <strong>Location:</strong> {location}
                 </p>
               </div>
             </div>
@@ -201,6 +198,7 @@ const UserProfile = () => {
                 </tbody>
               </table>
             </div>
+
             <div className={`tab ${activeTab === 2 ? "active" : ""}`}>
               <h2>Settings</h2>
               <form onSubmit={handleUpdate}>
@@ -213,6 +211,7 @@ const UserProfile = () => {
                     onChange={(e) => setUserName(e.target.value)}
                   />
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="email">Email:</label>
                   <input
@@ -220,6 +219,14 @@ const UserProfile = () => {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="location">Location:</label>
+                  <CountryList
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
