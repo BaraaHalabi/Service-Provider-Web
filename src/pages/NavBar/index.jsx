@@ -43,36 +43,11 @@ function NavBar({ isLoggedIn, profileImage }) {
     closeDropdown();
     navigate("/user-profile");
   };
-  const token = localStorage.getItem("token");
 
   const handleLogoutClick = () => {
-    // console.log("xxx");
-
-    // axios
-    //   .post("http://127.0.0.1:8000/api/logout", {
-    //     headers: {
-    //       "Content-type": "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //       Connection: "keep-alive",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     if (response.status === 200) {
     localStorage.removeItem("token");
     localStorage.removeItem("userID");
     navigate("/login");
-    // window.location.reload();
-    //   } else {
-    //     console.error("Logout response status not 200:", response);
-    //   }
-    // })
-    // .catch((error) => {
-    //   if (error.response) {
-    //     console.error("Logout error response:", error.response);
-    //   } else {
-    //     console.error("Logout error:", error.message);
-    //   }
-    // });
   };
 
   return (
