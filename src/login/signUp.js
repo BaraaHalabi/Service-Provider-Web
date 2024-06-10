@@ -6,8 +6,7 @@ import femaleImg from "../img/login-female.webp";
 import { validate } from "./validate";
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-import { notify } from "./toast";
+import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,16 +19,16 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../auth";
+import countryList from "../components/Countrylist";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-const SignUp = ({ setProfileImage }) => {
+const SignUp = ({ setProfileImage, setIsLoggedIn }) => {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth();
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    isAccepted: false,
+    location: "",
     profileImage: null,
   });
 
@@ -37,7 +36,6 @@ const SignUp = ({ setProfileImage }) => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -63,8 +61,8 @@ const SignUp = ({ setProfileImage }) => {
     setShowPassword(!showPassword);
   };
 
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
+  const notify = (message, type) => {
+    toast[type](message);
   };
 
   const submitHandler = (event) => {
@@ -78,19 +76,21 @@ const SignUp = ({ setProfileImage }) => {
       axios
         .post("http://127.0.0.1:8000/api/register", formData)
         .then((response) => {
-          if (response.status === 201) {
-            const token = response.data.token;
+          console.log("Response:", response);
+          if (response.status === 201 || response.status === 200) {
+            const { token, userId } = response.data;
             localStorage.setItem("token", token);
+            localStorage.setItem("userId", userId);
             notify("You signed up successfully", "success");
             setIsLoggedIn(true);
-            setProfileImage(imagePreview || userIcon); // Update the profile image state
+            setProfileImage(imagePreview || userIcon);
             navigate("/");
           } else {
             notify("An error occurred.", "error");
           }
         })
         .catch((error) => {
-          console.error(error);
+          console.error("Error:", error);
           notify("Sign up failed.", "error");
         });
     } else {
@@ -99,7 +99,7 @@ const SignUp = ({ setProfileImage }) => {
         name: true,
         email: true,
         password: true,
-        confirmPassword: true,
+        location: true,
         isAccepted: true,
       });
     }
@@ -157,6 +157,7 @@ const SignUp = ({ setProfileImage }) => {
               />
               <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
             </div>
+            {/* {errors.name && touched.name && <span>{errors.name}</span>} */}
           </div>
         </div>
 
@@ -173,6 +174,7 @@ const SignUp = ({ setProfileImage }) => {
             />
             <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
           </div>
+          {/* {errors.email && touched.email && <span>{errors.email}</span>} */}
         </div>
 
         <div className={styles.inputWithIcon}>
@@ -193,26 +195,35 @@ const SignUp = ({ setProfileImage }) => {
               onClick={togglePasswordVisibility}
             />
           </div>
+          {/* {errors.password && touched.password && (
+            <span>{errors.password}</span>
+          )} */}
         </div>
 
         <div className={styles.inputWithIcon}>
-          <div>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              name="confirmPassword"
-              value={data.confirmPassword}
-              placeholder="Confirm Password"
+          <div className={styles.selectWrapper}>
+            <select
+              name="location"
+              value={data.location}
               onChange={changeHandler}
               onFocus={focusHandler}
-              autoComplete="off"
-            />
-            <FontAwesomeIcon icon={faLock} className={styles.customIcon} />
+              className={styles.select}
+            >
+              <option value="">Select Location</option>
+              {countryList.map((country, index) => (
+                <option key={index} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
             <FontAwesomeIcon
-              icon={showConfirmPassword ? faEye : faEyeSlash}
-              className={styles.eyeIcon}
-              onClick={toggleConfirmPasswordVisibility}
+              icon={faMapMarkerAlt}
+              className={styles.customIcon}
             />
           </div>
+          {/* {errors.location && touched.location && (
+            <span>{errors.location}</span>
+          )} */}
         </div>
 
         <div>

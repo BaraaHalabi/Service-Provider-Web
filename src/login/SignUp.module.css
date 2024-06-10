@@ -62,6 +62,17 @@
   position: relative;
 }
 
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  width: 100%;
+  padding-right: 30px;
+}
+
 .inputWithIcon {
   padding: 2px;
   position: relative;
