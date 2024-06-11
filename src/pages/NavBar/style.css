@@ -29,6 +29,7 @@ nav .left-links {
 .nav-logo {
   display: none;
 }
+
 .sign-up-link {
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.5);
@@ -45,7 +46,7 @@ nav .left-links {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-nav .routes img {
+nav .routes .nav-logo {
   position: absolute;
 
   width: 170px;
@@ -82,6 +83,11 @@ nav a:hover {
 
 .dropdown-container {
   position: relative;
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
 }
 
 .user-icon {
@@ -90,6 +96,12 @@ nav a:hover {
   font-size: 2em;
   padding: 1px 20px;
   transition: background-color 0.3s ease;
+}
+
+.user-image {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .dropdown-menu {

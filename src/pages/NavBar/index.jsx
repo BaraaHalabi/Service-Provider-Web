@@ -3,8 +3,6 @@ import { Link as RouterLink, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
 import "./style.css";
 import "../../index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
 import userIcon from "../../img/userDefaultImage.png";
 
@@ -74,11 +72,16 @@ function NavBar({ isLoggedIn }) {
             </RouterLink>
           ) : (
             <div className="dropdown-container" ref={dropdownRef}>
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faUserCircle}
                 onClick={toggleDropdown}
                 className="user-icon"
-              />
+              /> */}
+              <img
+              src={userIcon}
+              className="user-image"
+              alt="profile"
+              onClick={toggleDropdown} />
               {dropdownVisible && (
                 <ul className="dropdown-menu">
                   <li>
