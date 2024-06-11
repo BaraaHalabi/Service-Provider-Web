@@ -11,7 +11,7 @@ import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
 import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
 import UserProfile from "./pages/UserProfile/index.tsx";
-import DocPage from "./pages/documentation/index.jsx";
+import DocPage from "./pages/ApiScript/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFoundPage from "./pages/NotFount/index.jsx";
 import { AuthProvider } from "./auth";

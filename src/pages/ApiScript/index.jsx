@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DocPage = () => {
   const [userName, setUserName] = useState("");
@@ -50,6 +52,7 @@ const DocPage = () => {
         console.error("Error fetching script:", error);
       }
     };
+
     const fetchApi = async () => {
       try {
         const response = await axios.get(
@@ -65,10 +68,23 @@ const DocPage = () => {
         console.error("Error fetching api:", error);
       }
     };
+
     fetchUserData();
     fetchScript();
     fetchApi();
   }, []);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast.success("Copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy text:", error);
+        toast.error("Failed to copy text.");
+      });
+  };
 
   return (
     <section className={styles.page}>
@@ -95,18 +111,29 @@ const DocPage = () => {
         <div className={styles.tabContent}>
           {activeTab === 0 && (
             <div>
-              {/* <h4>scrrrippttto </h4> */}
-              <p>{script}</p>
+              <button
+                className={styles.copyButton}
+                onClick={() => copyToClipboard(script)}
+              >
+                Copy Script
+              </button>
+              <pre>{script}</pre>
             </div>
           )}
           {activeTab === 1 && (
             <div>
-              {/* <h4>Apiiioo </h4> */}
+              <button
+                className={styles.copyButton}
+                onClick={() => copyToClipboard(api)}
+              >
+                Copy API
+              </button>
               <p>{api}</p>
             </div>
           )}
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

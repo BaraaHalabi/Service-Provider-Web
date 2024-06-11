@@ -93,9 +93,9 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           const token = response.data.token;
-          const userID = response.data.user.id;
+          const userId = response.data.user.id;
           localStorage.setItem("token", token);
-          localStorage.setItem("userID", userID);
+          localStorage.setItem("userID", userId);
           notify("You logged in successfully", "success");
           setIsLoggedIn(true);
           navigate("/");
