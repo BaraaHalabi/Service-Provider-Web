@@ -21,7 +21,7 @@ import {
 import countryList from "../components/Countries/Countrylist";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-const SignUp = ({ setProfileImage }) => {
+const SignUp = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ const SignUp = ({ setProfileImage }) => {
           localStorage.setItem("userId", user.id);
           notify("You signed up successfully", "success");
           setIsLoggedIn(true);
-          setProfileImage(imagePreview || userIcon);
+          // setProfileImage(imagePreview || userIcon);
           navigate("/");
         } else {
           notify("An error occurred.", "error");

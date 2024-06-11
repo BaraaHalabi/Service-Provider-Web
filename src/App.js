@@ -17,8 +17,6 @@ import NotFoundPage from "./pages/NotFount/index.jsx";
 import { AuthProvider } from "./auth";
 
 export default function App() {
-  const [profileImage, setProfileImage] = useState(null);
-
   return (
     <AuthProvider>
       <Router>
@@ -37,10 +35,7 @@ export default function App() {
             }
           />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/sign-up"
-            element={<SignUp setProfileImage={setProfileImage} />}
-          />
+          <Route path="/sign-up" element={<SignUp />} />
           <Route path="/more-services" element={<MoreServicesPage />} />
           <Route
             path="/services/:slug"

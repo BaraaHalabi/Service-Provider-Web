@@ -107,7 +107,7 @@ const UserProfile = () => {
 
       if (response.status === 200) {
         toast.success("User is updated successfully");
-        setLocation(newLocation); // Update the displayed location only on successful update
+        setLocation(newLocation);
       } else {
         toast.error("An error occurred.");
       }
@@ -173,8 +173,6 @@ const UserProfile = () => {
       <div className="profile-header">
         <div className="profile-img">
           <img src={imagePreview} width="200" alt="Profile" />
-          {/* <input type="file" id="imageUpload" onChange={handleImageChange} /> */}
-          {/* <label htmlFor="imageUpload">+</label> */}
         </div>
         <div className="profile-nav-info">
           <h3 className="user-name">{userName}</h3>
