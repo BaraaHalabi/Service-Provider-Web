@@ -49,6 +49,8 @@
   flex: 0 0 150px;
   height: 150px;
   margin-right: 20px;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .profile-img img {
@@ -57,13 +59,34 @@
   height: 100%;
   border: 5px solid #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.profile-img input[type="file"] {
+  display: none;
+}
+
+.profile-img label {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 40px;
 }
 
 .profile-nav-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  text-align: center;
 }
 
 .user-name {
@@ -232,20 +255,14 @@
   color: #555;
 }
 
-/* .update-button {
-  background-color: #ff9748;
-  border-radius: 10px;
-  width: 5rem;
-  animation: glowing 20s linear infinite;
-} */
 #root {
   --glow-color: #ff9748;
 }
+
 .glowing-btn {
   color: var(--glow-color);
   cursor: pointer;
   padding: 0.35em 1em;
-  /* margin-left: 30em; */
   margin-top: 1em;
   border: 0.15em solid #ff9748;
   border-radius: 0.45em;
@@ -304,6 +321,7 @@
 .glowing-btn:hover:after {
   opacity: 1;
 }
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -311,6 +329,31 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 12px solid #f3f3f3;
+  border-top: 12px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .form-group input,
@@ -321,6 +364,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 @keyframes faulty-flicker {
   0% {
     opacity: 0.1;
@@ -346,7 +390,6 @@
   83% {
     opacity: 0.4;
   }
-
   87% {
     opacity: 1;
   }
@@ -356,19 +399,15 @@
   0% {
     opacity: 0.1;
   }
-
   2% {
     opacity: 1;
   }
-
   8% {
     opacity: 0.1;
   }
-
   9% {
     opacity: 1;
   }
-
   12% {
     opacity: 0.1;
   }
@@ -381,14 +420,12 @@
   30% {
     opacity: 1;
   }
-
   70% {
     opacity: 0.7;
   }
   72% {
     opacity: 0.2;
   }
-
   77% {
     opacity: 0.9;
   }
@@ -407,7 +444,6 @@
   4% {
     opacity: 0.1;
   }
-
   8% {
     opacity: 1;
   }

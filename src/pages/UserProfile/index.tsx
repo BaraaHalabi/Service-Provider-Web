@@ -19,8 +19,11 @@ const UserProfile = () => {
   const [email, setEmail] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [newLocation, setNewLocation] = useState<string>("");
   const [services, setServices] = useState<Service[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [profileImage, setProfileImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>(pic);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,6 +65,7 @@ const UserProfile = () => {
         setUserName(name);
         setEmail(email);
         setLocation(location);
+        setNewLocation(location);
         setServices(servicesResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -88,7 +92,7 @@ const UserProfile = () => {
         name: userName,
         email: email,
         password: password,
-        location: location,
+        location: newLocation,
       };
 
       const response = await axios.post(
@@ -103,6 +107,7 @@ const UserProfile = () => {
 
       if (response.status === 200) {
         toast.success("User is updated successfully");
+        setLocation(newLocation); // Update the displayed location only on successful update
       } else {
         toast.error("An error occurred.");
       }
@@ -112,15 +117,64 @@ const UserProfile = () => {
     }
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setProfileImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleImageUpload = async () => {
+    if (!profileImage) {
+      toast.error("No image selected.");
+      return;
+    }
+
+    try {
+      const userId = localStorage.getItem("userID");
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+      formData.append("profile_image", profileImage);
+
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/user_update_image/${userId}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("Profile image updated successfully");
+      } else {
+        toast.error("Failed to update profile image.");
+      }
+    } catch (error) {
+      console.error("Error uploading profile image:", error);
+      toast.error("Failed to upload image.");
+    }
+  };
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
   return (
     <div className="profile-container">
       <div className="profile-header">
         <div className="profile-img">
-          <img src={pic} width="200" alt="Profile" />
+          <img src={imagePreview} width="200" alt="Profile" />
+          <input type="file" id="imageUpload" onChange={handleImageChange} />
+          <label htmlFor="imageUpload">+</label>
         </div>
         <div className="profile-nav-info">
           <h3 className="user-name">{userName}</h3>
@@ -225,8 +279,8 @@ const UserProfile = () => {
                 <div className="form-group">
                   <label htmlFor="location">Location:</label>
                   <CountryList
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    value={newLocation}
+                    onChange={(e) => setNewLocation(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
