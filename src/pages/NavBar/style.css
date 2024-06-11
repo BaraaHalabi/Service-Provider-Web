@@ -60,7 +60,7 @@ nav .routes .nav-logo {
   width: 65px;
   height: 65px;
   display: flex;
-  left: 2rem;
+  left: 3rem;
   top: 0.75rem;
 }
 
@@ -91,23 +91,16 @@ nav a:hover {
   position: relative;
   width: 36px;
   height: 36px;
-
   display: flex;
   justify-content: center;
-}
-
-.user-icon {
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  font-size: 2em;
-  padding: 1px 20px;
-  transition: background-color 0.3s ease;
 }
 
 .user-image {
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  width: 40px;
+  height: 42px;
 }
 
 .dropdown-menu {
@@ -154,7 +147,7 @@ nav a:hover {
     display: block;
     width: 50px;
   }
-  ..nav-logo1 {
+  .nav-logo1 {
     display: none;
   }
   nav .routes {
