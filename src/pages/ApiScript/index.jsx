@@ -8,7 +8,7 @@ const DocPage = () => {
   const [userName, setUserName] = useState("");
   const [script, setScript] = useState("");
   const [api, setApi] = useState("");
-  const userId = localStorage.getItem("userID");
+  const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   const [activeTab, setActiveTab] = useState(0);
 

@@ -79,7 +79,7 @@ const UserProfile = () => {
   const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
-  const userId = localStorage.getItem("userID");
+  const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
 
   const handleUpdate = async (e: React.FormEvent) => {
@@ -129,7 +129,7 @@ const UserProfile = () => {
       return;
     }
 
-    const userId = localStorage.getItem("userID");
+    const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
 
     try {
