@@ -8,7 +8,7 @@ import axios from "axios";
 
 const imageMapping = {
   "Analytics Service": whiteBoardImg,
-  "Chat Service": chatImg,
+  "Chat Service": socialmediaImg,
   "Payment Service": whiteBoardImg,
   "Link Tree Service": whiteBoardImg,
   "Register,Login Service": whiteBoardImg,

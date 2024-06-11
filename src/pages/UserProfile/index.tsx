@@ -173,8 +173,8 @@ const UserProfile = () => {
       <div className="profile-header">
         <div className="profile-img">
           <img src={imagePreview} width="200" alt="Profile" />
-          <input type="file" id="imageUpload" onChange={handleImageChange} />
-          <label htmlFor="imageUpload">+</label>
+          {/* <input type="file" id="imageUpload" onChange={handleImageChange} /> */}
+          {/* <label htmlFor="imageUpload">+</label> */}
         </div>
         <div className="profile-nav-info">
           <h3 className="user-name">{userName}</h3>

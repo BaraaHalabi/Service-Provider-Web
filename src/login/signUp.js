@@ -23,7 +23,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = ({ setProfileImage }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
@@ -68,42 +68,34 @@ const SignUp = ({ setProfileImage }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!Object.keys(errors).length) {
-      const formData = new FormData();
-      for (const key in data) {
-        formData.append(key, data[key]);
-      }
+    setIsLoading(true);
 
-      axios
-        .post("http://127.0.0.1:8000/api/register", formData)
-        .then((response) => {
-          console.log("Response:", response);
-          if (response.status === 201 || response.status === 200) {
-            const { token, userId } = response.data;
-            localStorage.setItem("token", token);
-            localStorage.setItem("userId", userId);
-            notify("You signed up successfully", "success");
-            setIsLoggedIn(true);
-            setProfileImage(imagePreview || userIcon);
-            navigate("/");
-          } else {
-            notify("An error occurred.", "error");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          notify("Sign up failed.", "error");
-        });
-    } else {
-      notify("Invalid data!", "error");
-      setTouched({
-        name: true,
-        email: true,
-        password: true,
-        location: true,
-        isAccepted: true,
-      });
+    const formData = new FormData();
+    for (const key in data) {
+      formData.append(key, data[key]);
     }
+
+    axios
+      .post("http://127.0.0.1:8000/api/register", formData)
+      .then((response) => {
+        if (response.status === 201 || response.status === 200) {
+          const { token, user } = response.data;
+          localStorage.setItem("token", token);
+          localStorage.setItem("userId", user.id);
+          notify("You signed up successfully", "success");
+          setIsLoggedIn(true);
+          setProfileImage(imagePreview || userIcon);
+          navigate("/");
+        } else {
+          notify("An error occurred.", "error");
+        }
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        notify("Sign up failed.", "error");
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -118,50 +110,21 @@ const SignUp = ({ setProfileImage }) => {
 
         <h1 className={styles.headerTitle}>Service Station</h1>
 
-        <div className={styles.formRow}>
-          <div className={styles.profileImageContainer}>
-            {imagePreview ? (
-              <img
-                src={imagePreview}
-                className={styles.profileImage}
-                alt="Profile"
-              />
-            ) : (
-              <img
-                src={userIcon}
-                className={styles.profileImage}
-                alt="Default Profile"
-              />
-            )}
-            <label className={styles.imageInputLabel}>
-              <FontAwesomeIcon icon={faPlus} className={styles.plusIcon} />
-              <input
-                type="file"
-                name="profileImage"
-                onChange={changeHandler}
-                className={styles.imageInput}
-                accept="image/png, image/jpeg"
-              />
-            </label>
-          </div>
-
-          <div className={`${styles.inputWithIcon} ${styles.nameInput}`}>
-            <div>
-              <input
-                type="text"
-                name="name"
-                value={data.name}
-                placeholder="Name"
-                onChange={changeHandler}
-                onFocus={focusHandler}
-                autoComplete="off"
-              />
-              <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
-            </div>
-            {/* {errors.name && touched.name && <span>{errors.name}</span>} */}
+        <div className={styles.formRow}>{/* Profile image code */}</div>
+        <div className={styles.inputWithIcon}>
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={data.name}
+              placeholder="Name"
+              onChange={changeHandler}
+              onFocus={focusHandler}
+              autoComplete="off"
+            />
+            <FontAwesomeIcon icon={faUser} className={styles.customIcon} />
           </div>
         </div>
-
         <div className={styles.inputWithIcon}>
           <div>
             <input
@@ -175,7 +138,6 @@ const SignUp = ({ setProfileImage }) => {
             />
             <FontAwesomeIcon icon={faEnvelope} className={styles.customIcon} />
           </div>
-          {/* {errors.email && touched.email && <span>{errors.email}</span>} */}
         </div>
 
         <div className={styles.inputWithIcon}>
@@ -196,9 +158,6 @@ const SignUp = ({ setProfileImage }) => {
               onClick={togglePasswordVisibility}
             />
           </div>
-          {/* {errors.password && touched.password && (
-            <span>{errors.password}</span>
-          )} */}
         </div>
 
         <div className={styles.inputWithIcon}>
@@ -222,13 +181,12 @@ const SignUp = ({ setProfileImage }) => {
               className={styles.customIcon}
             />
           </div>
-          {/* {errors.location && touched.location && (
-            <span>{errors.location}</span>
-          )} */}
         </div>
 
         <div>
-          <button type="submit">Create Account</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Creating Account..." : "Create Account"}
+          </button>
           <span
             style={{
               color: "white",

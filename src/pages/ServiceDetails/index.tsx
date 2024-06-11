@@ -15,7 +15,7 @@ const imageMapping: { [key: string]: string } = {
   "ShortLink &Ads Service": whiteBoardImg,
   "Bucket Service": whiteBoardImg,
   "Whiteboard Service": socialmediaImg,
-  "Social Media Management": socialmediaImg, // New service added
+  "Social Media Management": socialmediaImg,
 };
 
 const generateSlug = (title: string) => {
@@ -39,6 +39,7 @@ const ServiceDetailPage: React.FC = () => {
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [orderId, setOrderId] = useState<number>(1); // Initial order ID
 
   useEffect(() => {
     const fetchService = async () => {
@@ -58,7 +59,7 @@ const ServiceDetailPage: React.FC = () => {
           setService({
             ...foundService,
             imgSrc: imageMapping[foundService.name] || whiteBoardImg,
-            price: foundService.price, // Assuming price is already in correct format
+            price: foundService.price,
           });
         } else {
           setError("Service not found!");
@@ -71,6 +72,43 @@ const ServiceDetailPage: React.FC = () => {
 
     fetchService();
   }, [slug]);
+
+  const handleBuyNowClick = async () => {
+    const token = localStorage.getItem("token");
+
+    if (service) {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/api/create_invoice",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              order_id: orderId,
+              price_amount: service.price,
+              order_description: service.name,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to create invoice");
+        }
+
+        const data = await response.json();
+
+        setOrderId(orderId + 1);
+
+        window.location.href = data.redirectUrl;
+      } catch (error) {
+        setError("Error creating invoice");
+        console.error("Error:", error);
+      }
+    }
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -100,7 +138,9 @@ const ServiceDetailPage: React.FC = () => {
             </div>
             <div className={styles.cartPrice}>
               <h2>${service.price}/month</h2>
-              <button className={styles.button}>Buy Now!</button>
+              <button className={styles.button} onClick={handleBuyNowClick}>
+                Buy Now!
+              </button>
             </div>
           </div>
         </div>
