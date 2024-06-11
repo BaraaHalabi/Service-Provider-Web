@@ -8,7 +8,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
 import userIcon from "../../img/userDefaultImage.png";
 
-function NavBar({ isLoggedIn, profileImage }) {
+function NavBar({ isLoggedIn }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();

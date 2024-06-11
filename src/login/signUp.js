@@ -22,7 +22,9 @@ import { useAuth } from "../auth";
 import countryList from "../components/Countries/Countrylist";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-const SignUp = ({ setProfileImage, setIsLoggedIn }) => {
+const SignUp = ({ setProfileImage }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
