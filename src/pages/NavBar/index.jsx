@@ -3,10 +3,11 @@ import { Link as RouterLink, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
 import "./style.css";
 import "../../index.css";
-// import axios from "axios";
 import userIcon from "../../img/userDefaultImage.png";
+import { useAuth } from "../../auth";
+function NavBar() {
+  const { isLoggedIn } = useAuth();
 
-function NavBar({ isLoggedIn }) {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function NavBar({ isLoggedIn }) {
 
   const handleLogoutClick = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userID");
+    localStorage.removeItem("userId");
     navigate("/login");
   };
 
@@ -78,10 +79,11 @@ function NavBar({ isLoggedIn }) {
                 className="user-icon"
               /> */}
               <img
-              src={userIcon}
-              className="user-image"
-              alt="profile"
-              onClick={toggleDropdown} />
+                src={userIcon}
+                className="user-image"
+                alt="profile"
+                onClick={toggleDropdown}
+              />
               {dropdownVisible && (
                 <ul className="dropdown-menu">
                   <li>

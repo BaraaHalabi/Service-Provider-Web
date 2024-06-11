@@ -16,7 +16,6 @@ import {
   faUser,
   faEye,
   faEyeSlash,
-  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import countryList from "../components/Countries/Countrylist";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
@@ -84,7 +83,6 @@ const SignUp = () => {
           localStorage.setItem("userId", user.id);
           notify("You signed up successfully", "success");
           setIsLoggedIn(true);
-          // setProfileImage(imagePreview || userIcon);
           navigate("/");
         } else {
           notify("An error occurred.", "error");

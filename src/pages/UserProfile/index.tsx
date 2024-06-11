@@ -28,14 +28,13 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userId = localStorage.getItem("userID");
+        const userId = localStorage.getItem("userId");
         const token = localStorage.getItem("token");
 
         if (!userId || !token) {
           console.error("User ID or Token is undefined or null");
           return;
         }
-
         const userRequest = axios.get(
           `http://127.0.0.1:8000/api/users/${userId}`,
           {
@@ -80,14 +79,13 @@ const UserProfile = () => {
   const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
+  const userId = localStorage.getItem("userID");
+  const token = localStorage.getItem("token");
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const userId = localStorage.getItem("userID");
-      const token = localStorage.getItem("token");
-
       const userData = {
         name: userName,
         email: email,
@@ -131,10 +129,10 @@ const UserProfile = () => {
       return;
     }
 
-    try {
-      const userId = localStorage.getItem("userID");
-      const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userID");
+    const token = localStorage.getItem("token");
 
+    try {
       const formData = new FormData();
       formData.append("profile_image", profileImage);
 
