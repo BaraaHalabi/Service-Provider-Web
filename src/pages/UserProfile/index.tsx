@@ -20,9 +20,10 @@ const UserProfile = () => {
   const [location, setLocation] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [services, setServices] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchData = async () => {
       try {
         const userId = localStorage.getItem("userID");
         const token = localStorage.getItem("token");
@@ -32,7 +33,7 @@ const UserProfile = () => {
           return;
         }
 
-        const response = await axios.get(
+        const userRequest = axios.get(
           `http://127.0.0.1:8000/api/users/${userId}`,
           {
             headers: {
@@ -41,23 +42,7 @@ const UserProfile = () => {
           }
         );
 
-        const userData = response.data;
-        const { name, email, location } = userData;
-
-        setUserName(name);
-        setEmail(email);
-        setLocation(location);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    const fetchUserServices = async () => {
-      try {
-        const userId = localStorage.getItem("userID");
-        const token = localStorage.getItem("token");
-
-        const response = await axios.get(
+        const servicesRequest = axios.get(
           `http://127.0.0.1:8000/api/user_services?user_id=${userId}`,
           {
             headers: {
@@ -65,14 +50,27 @@ const UserProfile = () => {
             },
           }
         );
-        setServices(response.data);
+
+        const [userResponse, servicesResponse] = await Promise.all([
+          userRequest,
+          servicesRequest,
+        ]);
+
+        const userData = userResponse.data;
+        const { name, email, location } = userData;
+
+        setUserName(name);
+        setEmail(email);
+        setLocation(location);
+        setServices(servicesResponse.data);
       } catch (error) {
-        console.error("Error fetching user services:", error);
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchUserData();
-    fetchUserServices();
+    fetchData();
   }, []);
 
   const handleTabClick = (index: number) => {
@@ -113,6 +111,10 @@ const UserProfile = () => {
       toast.error("Failed to update user.");
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="profile-container">
