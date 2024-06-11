@@ -51,6 +51,8 @@ function NavBar() {
 
   return (
     <nav className="nav">
+      <img className="nav-logo1" src={logo} alt="Logo" />
+
       <div className="routes">
         <div className="left-links">
           <div>
@@ -73,11 +75,6 @@ function NavBar() {
             </RouterLink>
           ) : (
             <div className="dropdown-container" ref={dropdownRef}>
-              {/* <FontAwesomeIcon
-                icon={faUserCircle}
-                onClick={toggleDropdown}
-                className="user-icon"
-              /> */}
               <img
                 src={userIcon}
                 className="user-image"

@@ -48,14 +48,20 @@ nav .left-links {
 
 nav .routes .nav-logo {
   position: absolute;
-
   width: 170px;
-
   left: 2rem;
   top: 0.75rem;
   display: flex;
   width: 65px;
   height: 65px;
+}
+.nav-logo1 {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  left: 2rem;
+  top: 0.75rem;
 }
 
 nav > a {
@@ -146,10 +152,11 @@ nav a:hover {
 
   .nav-logo {
     display: block;
-
     width: 50px;
   }
-
+  ..nav-logo1 {
+    display: none;
+  }
   nav .routes {
     display: none;
   }
@@ -159,5 +166,11 @@ nav a:hover {
   nav > a {
     top: 0.75rem;
     right: 0;
+  }
+}
+
+@media screen and (max-width: 945px) {
+  .nav-logo1 {
+    display: none;
   }
 }
