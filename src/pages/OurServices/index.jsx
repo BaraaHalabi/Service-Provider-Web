@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import ServiceCard from "../../components/ServiceCard/index.tsx";
 import "./style.css";
 import whiteBoardImg from "../../img/whiteboarding.png";
-import socialmediaImg from "../../img/socialmedia.jpg";
-import chatImg from "../../img/chat.png";
+import socialmediaImg from "../../img/SocialMedia.png";
 import axios from "axios";
 
 const imageMapping = {

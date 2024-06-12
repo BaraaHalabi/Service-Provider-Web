@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Layout from "../../layout";
 import styles from "./ServiceDetailPage.module.css";
+
 import whiteBoardImg from "../../img/whiteboarding.png";
-import socialmediaImg from "../../img/socialmedia.jpg";
-import chatImg from "../../img/chat.png";
+import SocialMediaImg from "../../img/SocialMedia.png";
 
 const imageMapping: { [key: string]: string } = {
   "Analytics Service": whiteBoardImg,
-  "Chat Service": chatImg,
+  "Chatbot Service": SocialMediaImg,
   "Payment Service": whiteBoardImg,
   "Link Tree Service": whiteBoardImg,
   "Register,Login Service": whiteBoardImg,
-  "ShortLink &Ads Service": whiteBoardImg,
-  "Bucket Service": whiteBoardImg,
-  "Whiteboard Service": socialmediaImg,
-  "Social Media Management": socialmediaImg,
+  "ShortLink Service": whiteBoardImg,
+  "Whiteboard Service": SocialMediaImg,
+  "Social Media Management Service": SocialMediaImg,
+  "Loading Screen Service": SocialMediaImg,
 };
 
 const generateSlug = (title: string) => {
@@ -39,7 +38,7 @@ const ServiceDetailPage: React.FC = () => {
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [orderId, setOrderId] = useState<number>(1); // Initial order ID
+  const [orderId, setOrderId] = useState<number>(1);
 
   useEffect(() => {
     const fetchService = async () => {
@@ -102,7 +101,11 @@ const ServiceDetailPage: React.FC = () => {
 
         setOrderId(orderId + 1);
 
-        window.location.href = data.redirectUrl;
+        if (data.invoice_url) {
+          window.location.href = data.invoice_url;
+        } else {
+          throw new Error("Invoice URL not found in response");
+        }
       } catch (error) {
         setError("Error creating invoice");
         console.error("Error:", error);
@@ -111,7 +114,11 @@ const ServiceDetailPage: React.FC = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
   if (error) {
