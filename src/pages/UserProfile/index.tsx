@@ -276,7 +276,9 @@ const UserProfile = () => {
                   <label htmlFor="location">Location:</label>
                   <CountryList
                     value={newLocation}
-                    onChange={(e) => setNewLocation(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setNewLocation(e.target.value)
+                    }
                   />
                 </div>
                 <div className="form-group">
