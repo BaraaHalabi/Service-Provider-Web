@@ -14,6 +14,7 @@ import DocPage from "./pages/ApiScript/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFoundPage from "./pages/NotFount/index.jsx";
 import FAQPage from "./pages/FAQ/index.tsx";
+import FeedbackForm from "./components/feedback/FeedbackForm.js";
 import { AuthProvider } from "./auth";
 
 export default function App() {
@@ -87,7 +88,15 @@ export default function App() {
                 <FAQPage />
               </Layout>
             }
-          />{" "}
+          />
+          <Route
+            path="/feedback-form"
+            element={
+              <Layout>
+                <FeedbackForm />
+              </Layout>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

@@ -43,6 +43,10 @@ const FAQPage = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const openFormInNewTab = () => {
+    window.open("/feedback-form", "_blank");
+  };
+
   return (
     <div className="faq-container">
       <div className="accordion__wrapper">
@@ -68,6 +72,14 @@ const FAQPage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="accordion__wrapper">
+        <h3 className="accordion__title">
+          Submit Your Question/Recommendation/Report an Issue
+        </h3>
+        <button onClick={openFormInNewTab} className="feedback-button">
+          Submit{" "}
+        </button>
       </div>
     </div>
   );
