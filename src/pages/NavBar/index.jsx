@@ -5,6 +5,7 @@ import "./style.css";
 import "../../index.css";
 import userIcon from "../../img/userDefaultImage.png";
 import { useAuth } from "../../auth";
+
 function NavBar() {
   const { isLoggedIn } = useAuth();
 
@@ -64,6 +65,9 @@ function NavBar() {
             </NavLink>
             <NavLink to="/#services" className="nav-link">
               Services
+            </NavLink>
+            <NavLink to="/faqs" className="nav-link">
+              FAQs
             </NavLink>
           </div>
         </div>

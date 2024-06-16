@@ -6,7 +6,6 @@ import AboutUsPage from "./pages/AboutUs/index.jsx";
 import Layout from "./layout";
 import Login from "./login/Login";
 import SignUp from "./login/signUp";
-import MoreServicesPage from "./pages/MoreServices/index.tsx";
 import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
 import Seperator from "./components/serperator/serperator.js";
 import PaymentPage from "./pages/Payment/index.tsx";
@@ -14,6 +13,7 @@ import UserProfile from "./pages/UserProfile/index.tsx";
 import DocPage from "./pages/ApiScript/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFoundPage from "./pages/NotFount/index.jsx";
+import FAQPage from "./pages/FAQ/index.tsx";
 import { AuthProvider } from "./auth";
 
 export default function App() {
@@ -36,7 +36,6 @@ export default function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/more-services" element={<MoreServicesPage />} />
           <Route
             path="/services/:slug"
             element={
@@ -45,7 +44,6 @@ export default function App() {
               </Layout>
             }
           />
-
           <Route
             path="/payment"
             element={
@@ -82,7 +80,14 @@ export default function App() {
               />
             }
           />
-
+          <Route
+            path="/faqs"
+            element={
+              <Layout>
+                <FAQPage />
+              </Layout>
+            }
+          />{" "}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

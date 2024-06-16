@@ -1,7 +1,0 @@
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  padding: 3rem;
-  padding-bottom: 5rem;
-}
