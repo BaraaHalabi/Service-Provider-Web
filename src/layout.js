@@ -1,4 +1,3 @@
-// Layout.js
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
@@ -13,11 +12,13 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (location.hash) {
-      scroller.scrollTo(location.hash.substring(1), {
-        duration: 100,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
+      setTimeout(() => {
+        scroller.scrollTo(location.hash.substring(1), {
+          duration: 100,
+          delay: 0,
+          smooth: "easeInOutQuart",
+        });
+      }, 100); // Adjust the delay if necessary
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -29,7 +30,7 @@ const Layout = ({ children }) => {
         isLoggedIn={isLoggedIn}
         toggleLoginStatus={toggleLoginStatus}
         handleLogout={handleLogout}
-      />{" "}
+      />
       <main>{children}</main>
       <ContactUsPage />
     </>
