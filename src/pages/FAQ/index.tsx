@@ -23,11 +23,6 @@ const FAQPage = () => {
         "Our platform offers a wide range of services, including e-commerce solutions, content management systems, customer relationship management tools, and analytics dashboards. These services are designed to meet the diverse needs of website owners across various industries and sectors.",
     },
     {
-      question: "How does the user-friendly dashboard help me?",
-      answer:
-        "The user-friendly dashboard provides valuable insights and analytics, enabling product owners to monitor service usage, user engagement, and other key metrics effectively. This allows you to make data-driven decisions to improve your website's performance and user experience.",
-    },
-    {
       question: "Is extensive development work required to use the platform?",
       answer:
         "No, the platform is designed to minimize the need for extensive development work. You can easily select and integrate the services you need without requiring significant technical expertise, making it accessible for website owners of all skill levels.",
@@ -36,6 +31,11 @@ const FAQPage = () => {
       question: "Can the platform be customized to fit my specific needs?",
       answer:
         "Yes, the platform offers a seamless and customizable solution that can be tailored to meet the unique requirements of your website. You can choose from a variety of services and configure them to align with your specific goals and objectives.",
+    },
+    {
+      question: "What happens after I make a payment?",
+      answer:
+        "After you make a payment, we provide you with the necessary scripts and APIs to integrate the service you paid for into your website. This allows you to quickly and easily add the new functionality without extensive development work.",
     },
   ];
 
