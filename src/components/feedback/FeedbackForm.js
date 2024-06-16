@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 import "./FeedbackForm.css";
 
 const FeedbackForm = () => {
+  useEffect(() => {
+    // Initialize EmailJS with your User ID
+    emailjs.init("Pn__uykX3OPYm-fpb");
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,11 +38,27 @@ const FeedbackForm = () => {
       .then(
         (result) => {
           console.log(result.text);
-          alert("Feedback sent successfully!");
+          toast.success("Feedback sent successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         },
         (error) => {
           console.log(error.text);
-          alert("An error occurred while sending feedback.");
+          toast.error("An error occurred while sending feedback.", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       );
     e.target.reset();

@@ -89,14 +89,7 @@ export default function App() {
               </Layout>
             }
           />
-          <Route
-            path="/feedback-form"
-            element={
-              <Layout>
-                <FeedbackForm />
-              </Layout>
-            }
-          />
+          <Route path="/feedback-form" element={<FeedbackForm />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

@@ -1,21 +1,7 @@
 .faq-container {
-  --color-primary: #ff9748;
-  --color-text: #201307;
-  --color-white: #fff;
-  --color-title: #201307;
-  --color-background: #f6f6f8;
-  --color-border: #ff9748;
-  --fs-sm: 1rem;
-  --fs-md: 1.2rem;
-  --fs-lg: 1.6rem;
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-bold: 700;
-  --transition: 0.4s ease-in-out;
 }
 
 .faq-container {
-  padding-top: 9rem;
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: var(--fs-md);
@@ -25,7 +11,6 @@
 .accordion__wrapper {
   width: 100%;
   margin: auto;
-  padding: 4rem;
   display: grid;
   place-items: center;
   background-color: var(--color-background);
