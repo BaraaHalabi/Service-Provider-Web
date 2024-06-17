@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 import NavBar from "./pages/NavBar";
-import ContactUsPage from "./pages/ContactUs";
+import ContactUsPage from "./pages/SocialMedia/index.jsx";
 import { useAuth } from "./auth.js";
 import "./index.css";
 

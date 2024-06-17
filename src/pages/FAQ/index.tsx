@@ -48,9 +48,16 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="faq-container">
+    <div id="faq">
+      <header>
+        <h3>
+          <span className="dash"></span>Service Station
+        </h3>
+        <h1>
+          <span className="dot"></span>Frequently Asked Questions
+        </h1>
+      </header>
       <div className="accordion__wrapper">
-        <h1 className="accordion__title">Frequently Asked Questions</h1>
         {faqs.map((faq, index) => (
           <div className="accordion" key={index}>
             <div
@@ -72,14 +79,6 @@ const FAQPage = () => {
             </div>
           </div>
         ))}
-      </div>
-      <div className="accordion__wrapper">
-        <h3 className="accordion__title">
-          Submit Your Question/Recommendation/Report an Issue
-        </h3>
-        <button onClick={openFormInNewTab} className="feedback-button">
-          Submit{" "}
-        </button>
       </div>
     </div>
   );

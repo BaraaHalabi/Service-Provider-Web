@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home/index.jsx";
 import OurServicesPage from "./pages/OurServices/index.jsx";
@@ -14,7 +14,7 @@ import DocPage from "./pages/ApiScript/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFoundPage from "./pages/NotFount/index.jsx";
 import FAQPage from "./pages/FAQ/index.tsx";
-import FeedbackForm from "./components/feedback/FeedbackForm.js";
+import FeedbackForm from "./pages/ContactUs/index.jsx";
 import { AuthProvider } from "./auth";
 
 export default function App() {
@@ -32,6 +32,7 @@ export default function App() {
                 <Seperator />
                 <OurServicesPage />
                 <Seperator />
+                <FAQPage />
               </Layout>
             }
           />
@@ -81,15 +82,8 @@ export default function App() {
               />
             }
           />
-          <Route
-            path="/faqs"
-            element={
-              <Layout>
-                <FAQPage />
-              </Layout>
-            }
-          />
-          <Route path="/feedback-form" element={<FeedbackForm />} />
+
+          <Route path="/contact-us" element={<FeedbackForm />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

@@ -65,8 +65,11 @@ function NavBar() {
             <NavLink to="/#services" className="nav-link">
               Services
             </NavLink>
-            <NavLink to="/faqs" className="nav-link">
+            <NavLink to="/#faq" className="nav-link">
               FAQs
+            </NavLink>
+            <NavLink target="_blank" to="/contact-us" className="nav-link">
+              Contact Us
             </NavLink>
           </div>
         </div>

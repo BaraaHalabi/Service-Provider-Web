@@ -15,7 +15,6 @@
 }
 
 .faq-container {
-  padding-top: 9rem;
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: var(--fs-md);
@@ -23,7 +22,6 @@
 }
 
 .accordion__wrapper {
-  width: 100%;
   margin: auto;
   padding: 4rem;
   display: grid;
@@ -78,4 +76,20 @@
 
 .accordion__answer {
   padding: 1rem 0;
+}
+
+.feedback-button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2rem;
+  font-size: 15px;
+  font-weight: var(--fw-bold);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.feedback-button:hover {
+  background-color: #e88b32;
 }
