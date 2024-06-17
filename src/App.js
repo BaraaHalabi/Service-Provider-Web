@@ -8,7 +8,6 @@ import Login from "./login/Login";
 import SignUp from "./login/signUp";
 import ServiceDetailPage from "./pages/ServiceDetails/index.tsx";
 import Seperator from "./components/serperator/serperator.js";
-import PaymentPage from "./pages/Payment/index.tsx";
 import UserProfile from "./pages/UserProfile/index.tsx";
 import DocPage from "./pages/ApiScript/index.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -47,20 +46,9 @@ export default function App() {
               </Layout>
             }
           />
+
           <Route
-            path="/payment"
-            element={
-              <ProtectedRoute
-                element={() => (
-                  <Layout>
-                    <PaymentPage />
-                  </Layout>
-                )}
-              />
-            }
-          />
-          <Route
-            path="/doc-page"
+            path="/script-api-page"
             element={
               <ProtectedRoute
                 element={() => (

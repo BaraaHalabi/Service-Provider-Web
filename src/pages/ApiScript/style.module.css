@@ -17,14 +17,6 @@
   background-color: #2d2d2d;
 }
 
-pre {
-  padding: 10px;
-  border-radius: 5px;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
 .tabs ul {
   display: flex;
   justify-content: space-around;

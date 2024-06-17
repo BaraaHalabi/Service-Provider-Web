@@ -3,7 +3,6 @@ import styles from "./style.module.css";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 const DocPage = () => {
   const [userName, setUserName] = useState("");
   const [script, setScript] = useState("");
@@ -117,7 +116,7 @@ const DocPage = () => {
               >
                 Copy Script
               </button>
-              <pre>{script}</pre>
+              <pre language="xml">{script}</pre>
             </div>
           )}
           {activeTab === 1 && (
@@ -128,7 +127,7 @@ const DocPage = () => {
               >
                 Copy API
               </button>
-              <p>{api}</p>
+              <pre language="HTML">{api}</pre>
             </div>
           )}
         </div>
