@@ -43,18 +43,14 @@ const FAQPage = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const openFormInNewTab = () => {
-    window.open("/feedback-form", "_blank");
-  };
-
   return (
-    <div id="faq">
+    <div id="faq" className="faq-container">
       <header>
         <h3>
           <span className="dash"></span>Service Station
         </h3>
         <h1>
-          <span className="dot"></span>Frequently Asked Questions
+          <span className="dot"></span>FAQs
         </h1>
       </header>
       <div className="accordion__wrapper">

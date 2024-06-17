@@ -14,6 +14,8 @@ const FeedbackForm = () => {
     description: "",
   });
 
+  const [messageSent, setMessageSent] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,6 +37,7 @@ const FeedbackForm = () => {
       .then(
         (result) => {
           console.log(result.text);
+          setMessageSent(true);
           toast.success("Feedback sent successfully!", {
             position: "top-right",
             autoClose: 5000,
@@ -63,9 +66,13 @@ const FeedbackForm = () => {
 
   return (
     <div id="feedback-form-container">
+      
       <div className="wrap">
         <div className="feedback">
           <h1>Submit Your Feedback</h1>
+          {messageSent && (
+            <p className="success-message">Your message has been sent!</p>
+          )}
           <form onSubmit={sendEmail}>
             <div className="row">
               <input

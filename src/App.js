@@ -33,6 +33,7 @@ export default function App() {
                 <OurServicesPage />
                 <Seperator />
                 <FAQPage />
+                <Seperator />
               </Layout>
             }
           />

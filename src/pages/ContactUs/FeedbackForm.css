@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
 
 :root {
-  --light: ##201307;
+  --light: #201307;
   --bg_1: #ff9748;
   --bg_2: #dd7526;
 }
@@ -20,6 +20,7 @@
 
 #feedback-form-container .feedback h1 {
   text-align: center;
+  color: #201307;
 }
 
 #feedback-form-container .row {
