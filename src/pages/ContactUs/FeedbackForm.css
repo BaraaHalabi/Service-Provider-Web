@@ -6,6 +6,10 @@
   --bg_2: #dd7526;
 }
 
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 #feedback-form-container {
   width: 100%;
   height: 100%;
@@ -15,12 +19,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#feedback-form-container .wrap {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 100%;
 }
 
 #feedback-form-container .feedback h1 {
   text-align: center;
-  color: #201307;
+  color: var(--light);
+  margin-bottom: 20px;
 }
 
 #feedback-form-container .row {
@@ -30,63 +44,72 @@
 
 #feedback-form-container input,
 #feedback-form-container textarea {
-  width: 25em;
-  padding: 10px;
-  margin: 0;
+  width: 100%;
+  padding: 15px;
   border: 1px solid var(--light);
-  border-radius: 3px;
+  border-radius: 5px;
   font-family: inherit;
   color: inherit;
   font-size: 15px;
-  background: linear-gradient(120deg, var(--bg_2), var(--bg_1));
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+#feedback-form-container input:focus,
+#feedback-form-container textarea:focus {
+  border-color: var(--bg_1);
+  box-shadow: 0 0 5px rgba(255, 151, 72, 0.5);
+  outline: none;
 }
 
 #feedback-form-container .button {
   text-align: center;
+  margin-top: 20px;
 }
 
 #feedback-form-container button {
-  width: 25em;
-  padding: 10px;
-  margin: 0;
-  border: 1px solid var(--light);
-  border-radius: 3px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
   font-family: inherit;
-  color: inherit;
+  color: white;
   font-size: 15px;
   background: linear-gradient(120deg, var(--bg_2), var(--bg_1));
   transition: all 0.4s linear;
+  cursor: pointer;
 }
 
 #feedback-form-container button:hover {
   background: var(--light);
-  color: var(--bg_2);
+  color: white;
 }
 
 #feedback-form-container .label {
   position: absolute;
-  top: 11px;
-  left: 11px;
+  top: 18px;
+  left: 15px;
   font-size: 14px;
-  letter-spacing: 1px;
   color: #888888;
   cursor: text;
   transition: all 0.2s ease-in-out;
 }
 
-#feedback-form-container .row_input:focus {
-  box-shadow: inset 0 0 5px var(--light);
-}
-
 #feedback-form-container .row_input:focus ~ .label,
 #feedback-form-container .row_input:valid ~ .label {
-  top: -18px;
-  left: 0;
-  font-size: 16px;
-  color: var(--light);
+  top: -10px;
+  left: 15px;
+  font-size: 12px;
+  color: var(--bg_1);
 }
 
 #feedback-form-container .row_input:focus ~ .label:first-letter,
 #feedback-form-container .row_input:valid ~ .label:first-letter {
   text-transform: uppercase;
+}
+
+#feedback-form-container .success-message {
+  color: green;
+  text-align: center;
+  margin-top: 20px;
 }

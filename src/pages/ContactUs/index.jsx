@@ -66,7 +66,6 @@ const FeedbackForm = () => {
 
   return (
     <div id="feedback-form-container">
-      
       <div className="wrap">
         <div className="feedback">
           <h1>Submit Your Feedback</h1>
