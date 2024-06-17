@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
 
 :root {
-  --light: #cdf6fa;
-  --bg_1: #111e25;
-  --bg_2: #111111;
+  --light: ##201307;
+  --bg_1: #ff9748;
+  --bg_2: #dd7526;
 }
 
 #feedback-form-container {

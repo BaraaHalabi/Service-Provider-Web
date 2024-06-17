@@ -65,7 +65,7 @@ const FeedbackForm = () => {
     <div id="feedback-form-container">
       <div className="wrap">
         <div className="feedback">
-          <h1>Submit Your Feddback</h1>
+          <h1>Submit Your Feedback</h1>
           <form onSubmit={sendEmail}>
             <div className="row">
               <input
