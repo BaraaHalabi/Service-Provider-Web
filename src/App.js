@@ -72,6 +72,18 @@ export default function App() {
             }
           />
           <Route
+            path="/faq"
+            element={
+              <ProtectedRoute
+                element={() => (
+                  <Layout>
+                    <FAQPage />
+                  </Layout>
+                )}
+              />
+            }
+          />
+          <Route
             path="/user-profile"
             element={
               <ProtectedRoute

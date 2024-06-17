@@ -44,39 +44,40 @@ const FAQPage = () => {
   };
 
   return (
-    <div id="faq" className="faq-container">
-      <header>
+    <section id="faq">
+      <div className="faq-container">
         <h3>
           <span className="dash"></span>Service Station
         </h3>
         <h1>
           <span className="dot"></span>FAQs
         </h1>
-      </header>
-      <div className="accordion__wrapper">
-        {faqs.map((faq, index) => (
-          <div className="accordion" key={index}>
-            <div
-              className="accordion__header"
-              onClick={() => toggleAccordion(index)}
-            >
-              <h2 className="accordion__question">{faq.question}</h2>
-              <span className="accordion__icon">
-                <FontAwesomeIcon
-                  icon={openIndex === index ? faMinus : faPlus}
-                />
-              </span>
+
+        <div className="accordion__wrapper">
+          {faqs.map((faq, index) => (
+            <div className="accordion" key={index}>
+              <div
+                className="accordion__header"
+                onClick={() => toggleAccordion(index)}
+              >
+                <h2 className="accordion__question">{faq.question}</h2>
+                <span className="accordion__icon">
+                  <FontAwesomeIcon
+                    icon={openIndex === index ? faMinus : faPlus}
+                  />
+                </span>
+              </div>
+              <div
+                className="accordion__content"
+                style={{ height: openIndex === index ? "auto" : "0px" }}
+              >
+                <p className="accordion__answer">{faq.answer}</p>
+              </div>
             </div>
-            <div
-              className="accordion__content"
-              style={{ height: openIndex === index ? "auto" : "0px" }}
-            >
-              <p className="accordion__answer">{faq.answer}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
