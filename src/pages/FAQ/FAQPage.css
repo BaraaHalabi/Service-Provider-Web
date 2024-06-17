@@ -32,7 +32,7 @@
 
 .accordion__wrapper {
   margin: auto;
-  padding: 4rem;
+  /* padding: 4rem; */
   display: grid;
   place-items: center;
   background-color: var(--color-background);
