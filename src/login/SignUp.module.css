@@ -62,17 +62,6 @@
   position: relative;
 }
 
-.selectWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.select {
-  width: 100%;
-  padding-right: 30px;
-}
-
 .inputWithIcon {
   padding: 2px;
   position: relative;
@@ -87,7 +76,7 @@
   width: 15px;
   height: 15px;
   position: absolute;
-  left: 5px;
+  left: 0.7rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
@@ -96,14 +85,20 @@
 
 .formLogin input[type="text"],
 .formLogin input[type="email"],
-.formLogin input[type="password"] {
+.formLogin input[type="password"],
+select {
   background-color: #f6f6f8;
   border: 2px solid #f6f6f8;
   border-radius: 6px;
   padding: 15px 20px;
   width: calc(100% - 10px);
   font-size: 14px;
+  box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input::placeholder {
+  padding-left: 1rem;
 }
 
 .formLogin input[type="text"]:hover,

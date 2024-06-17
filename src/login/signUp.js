@@ -108,7 +108,6 @@ const SignUp = () => {
 
         <h1 className={styles.headerTitle}>Service Station</h1>
 
-        <div className={styles.formRow}>{/* Profile image code */}</div>
         <div className={styles.inputWithIcon}>
           <div>
             <input
