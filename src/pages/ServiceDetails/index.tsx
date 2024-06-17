@@ -102,8 +102,8 @@ const ServiceDetailPage: React.FC = () => {
         setOrderId(orderId + 1);
 
         if (data.invoice_url) {
-          // window.location.href = data.invoice_url;
-          window.location.href = "http://localhost:3000/script-api-page/";
+          window.location.href = data.invoice_url;
+          // window.location.href = "http://localhost:3000/script-api-page/";
         } else {
           throw new Error("Invoice URL not found in response");
         }
