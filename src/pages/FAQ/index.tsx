@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./FAQPage.css";
 
-const FAQPage = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+const FAQPage: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
@@ -39,7 +39,7 @@ const FAQPage = () => {
     },
   ];
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 

@@ -113,7 +113,7 @@ const FeedbackForm = () => {
                 required
               ></textarea>
               <label htmlFor="message" className="label">
-                 Message
+                Message
               </label>
             </div>
             <div className="row">
